@@ -1,11 +1,31 @@
 ---
-title: "slance99.github.io"
+title: "Sam Lance"
+image: media/headshot.jpeg
+2toc: false
+about:
+  template: broadside
+  image-shape: round
+  image-width: 20em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/sam-lance-898a5221a/
+    - icon: square-github
+      text: GitHub
+      href: https://github.com/slance99
+    - icon: envelope
+      text: Email
+      href: mailto:slance@ucsb.edu
 ---
 
-This is a Quarto website.
+**ABOUT ME**
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Hi, I'm Sam! I am currently living in Santa Barbara, California getting my Masters in Environmental Science and Management (MESM) degree. With my background in Earth Science and Hydrology, I enjoy thinking about how to use publically available large datasets to understand river migration and avulsions to prevent flooding in major cities.
 
-```{r}
-1 + 1
-```
+**PROFESSIONAL INTERESTS:**
+
+Geomorphology \| River Migration and Movement \| Flood Resilience \| Sustainable Water Resource Management \| Environmental Justice \| Sustainability
+
+**TECHNICAL SKILLS:**
+
+R Studio \| Python \| Excel \| Microsoft Office \| ArcGIS Pro \| ArcMap

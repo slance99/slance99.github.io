@@ -1,19 +1,30 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "slance99.github.io"
+  title: "SAM LANCE"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+    - href: index.qmd
+      text: Home
+    - href: about.qmd
+      text: About
+    - href: /portfolio_docs/resume.pdf
+      text: Resume
+    - href: /portfolio_docs/cv.pdf
+      text: CV
+      target: _blank
+    - icon: github
+      href: https://github.com/slance99
+      target: _blank
 
 format:
   html:
-    theme: cosmo
+    theme: sandstone
     css: styles.css
     toc: true
+    page-layout: full
 
 editor: visual
 
