@@ -4,12 +4,17 @@ project:
 
 website:
   title: "SAM LANCE"
+  favicon: /media/lance_logo.png # NOTE: that the `favicon` is a `website` level option (not under `navbar`)
   navbar:
+    logo: /media/lance_logo.png
+    logo-alt: "Alt text for logo"
     left:
     - href: index.qmd
       text: Home
     - href: about.qmd
       text: About
+    - href: posts.qmd
+      text: Portfolio
     - href: /portfolio_docs/resume.pdf
       text: Resume
     - href: /portfolio_docs/cv.pdf
@@ -25,7 +30,7 @@ website:
 
 format:
   html:
-    theme: sandstone
+    theme: sandstone 
     css: styles.css
     toc: true
     page-layout: full
