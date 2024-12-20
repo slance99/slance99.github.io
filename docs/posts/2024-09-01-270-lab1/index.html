@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sam Lance, Liv Hemond, Ashley Larsen">
+<meta name="dcterms.date" content="2024-12-01">
+<meta name="description" content="Understanding how African Lion habitats will change under different climate change predictions">
 
-<title>Portfolio – SAM LANCE</title>
+<title>Habitat Suitability for African Lion Populations Under Climate Change – SAM LANCE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +26,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href=".//media/lance_logo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//media/lance_logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,80 +72,22 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./media/lance_logo.png" alt="Alt text for logo" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../media/lance_logo.png" alt="Alt text for logo" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">SAM LANCE</span>
     </a>
   </div>
@@ -155,23 +98,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio_docs/resume.pdf"> 
+    <a class="nav-link" href="../../portfolio_docs/resume.pdf"> 
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio_docs/cv.pdf" target="_blank"> 
+    <a class="nav-link" href="../../portfolio_docs/cv.pdf" target="_blank"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item compact">
@@ -187,114 +130,105 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Habitat Suitability for African Lion Populations Under Climate Change</h1>
+                  <div>
+        <div class="description">
+          Understanding how African Lion habitats will change under different climate change predictions
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Writing Sample</div>
+                <div class="quarto-category">GIS</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author column-page-left">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">Sam Lance, Liv Hemond, Ashley Larsen </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Master of Environmental Science and Management at the The Bren School (UCSB), Conservation Planning (ESM 270)
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta column-page-left">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 1, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="GIS">GIS <span class="quarto-category-count">(2)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Writing Sample">Writing Sample <span class="quarto-category-count">(2)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><strong>Background</strong></a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem"><strong>Problem</strong></a></li>
+  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach"><strong>Approach</strong>&nbsp;</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><strong>Results</strong>&nbsp;</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><strong>Conclusion</strong>&nbsp;</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Portfolio</h1>
-</div>
-
-
-
-<div class="quarto-title-meta column-page-left">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
 
+<section id="background" class="level1">
+<h1><strong>Background</strong></h1>
+<p>From 1900-2022, atmospheric carbon has climbed from 8.54 to 53.85 billion tons (Jones et al.&nbsp;2024). While we can model previous carbon emissions, predicting future emissions regimes, alongside societal change and economic development, divides scholars. Each possible scenario, which ranges from overly pessimistic (high difficulty mitigating emissions) to overly optimistic (low difficulty mitigating emissions), will affect species to varying degrees.&nbsp;</p>
+</section>
+<section id="problem" class="level1">
+<h1><strong>Problem</strong></h1>
+<p>Climate change and socioeconomic development will affect future environmental conditions and African lion range. We sought to understand the distribution of future suitable habitat for lions, considering two climate scenarios (SSP1-2.6 and SSP5-8.5) to encompass a range of possible future conditions.</p>
+</section>
+<section id="approach" class="level1">
+<h1><strong>Approach</strong>&nbsp;</h1>
+<p>To understand this problem, we utilized Maxent through the interactive web interface Wallace. Maxent utilizes species occurrence data input by the user as well as climate data (precipitation, temperature, etc.) to find the current range of suitable habitats for a specific species. It then allows the user to input a desired future timeframe and climate scenario to visualize changes in range over time. For this project, all other variables were held constant except the climate scenario (SSP1-2.6 and SSP5-8.5) to compare the differences in suitable habitat accurately. Once the analysis was performed for each scenario, the original and future maps were exported as TIF files and input into ArcGIS Pro. Using Raster Calculator, the values of the future map were subtracted from the original to yield a layer describing the change in habitat suitability between the two.&nbsp;</p>
+</section>
+<section id="results" class="level1">
+<h1><strong>Results</strong>&nbsp;</h1>
+<p>The final analysis produced two maps (Figure 1) showing the percentage change for African Lion habitats between the two climate scenarios. Visual assessment provided the following results:</p>
+<ul>
+<li><p>Western Africa was more suitable for African lions in SSP1-2.6 compared to SSP5-8.5</p></li>
+<li><p>Southern Africa was more suitable for African Lions in SSP5-8.5 compared to SSP1-2.6</p></li>
+<li><p>Regions in Central Africa that became more suitable for African Lions in SSP1-2.6 became less suitable for lions in SSP5-8.5</p>
+<p><img src="figure_1.png" class="img-fluid"></p></li>
+</ul>
+<p><strong>Figure 1. African lion habitat suitability.</strong> Percent change in habitat suitability for African lions (Panthera leo) from present day to 2041-60 under SSP1-2.6 (A-Sam Lance) and SSP5-8.5 (B-Liv Hemond).</p>
+</section>
+<section id="conclusion" class="level1">
+<h1><strong>Conclusion</strong>&nbsp;</h1>
+<p>The areas characterized by a negative change in habitat suitability values, shown in dark green on the map, should be prioritized for conservation. In effect, these areas are predicted to become increasingly suitable for lions in the future (henceforth these areas are referred to as “future suitable habitat”). It would be useful to compare the locations of future suitable habitat with existing nature reserves and protected areas to assess what degree of protection is already given to them, and whether there are key areas missing that would benefit from greater protections. Given the uncertainty over which SSP scenario will best match reality, managers may also want to prioritize conservation of future suitable habitat, especially where the areas overlap between the two SSP scenarios.&nbsp;</p>
+<p>If lions shift their ranges to occupy new areas, it is worth considering the impact that may have on people living in those areas, especially if they are not accustomed to living near lions. While a charismatic and widely-regarded species, lions are also potentially dangerous to livestock and humans (Mills et al., 2023). To minimize human-wildlife conflict in a changing world, wildlife managers may want to consider proactively planning for human-lion coexistence in those communities based upon existing successful strategies (Blackburn et al., 2016).</p>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Writing Sample,R,GIS" data-listing-date-sort="1733032800000" data-listing-file-modified-sort="1734576089934" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3057">
-<a href="./posts/2024-12-01-watershed-plan/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-12-01-watershed-plan/St_Louis.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-St.&nbsp;Louis, Missouri Watershed Management Plan
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Writing Sample'); return false;">
-Writing Sample
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('GIS'); return false;">
-GIS
-</div>
-</div>
-<div class="card-text listing-description">
-Watershed Management Plan for the city of St.&nbsp;Louis Missouri
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance, Natalie Mayer, Liv Hemond
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Writing Sample,GIS" data-listing-date-sort="1733032800000" data-listing-file-modified-sort="1734661945077" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="555">
-<a href="./posts/2024-09-01-270-lab1/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-09-01-270-lab1/african_lions.avif" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Habitat Suitability for African Lion Populations Under Climate Change
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Writing Sample'); return false;">
-Writing Sample
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('GIS'); return false;">
-GIS
-</div>
-</div>
-<div class="card-text listing-description">
-Understanding how African Lion habitats will change under different climate change predictions
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance, Liv Hemond, Ashley Larsen
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,0 +1,43 @@
+---
+title: "Habitat Suitability for African Lion Populations Under Climate Change"
+description: "Understanding how African Lion habitats will change under different climate change predictions"
+author:
+  - name: Sam Lance, Liv Hemond, Ashley Larsen
+    affiliation: Master of Environmental Science and Management at the The Bren School (UCSB), Conservation Planning (ESM 270)
+date: 12-1-2024
+categories: [Writing Sample, GIS] # self-defined categories
+image: african_lions.avif
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+# **Background**
+
+From 1900-2022, atmospheric carbon has climbed from 8.54 to 53.85 billion tons (Jones et al. 2024). While we can model previous carbon emissions, predicting future emissions regimes, alongside societal change and economic development, divides scholars. Each possible scenario, which ranges from overly pessimistic (high difficulty mitigating emissions) to overly optimistic (low difficulty mitigating emissions), will affect species to varying degrees. 
+
+# **Problem**
+
+Climate change and socioeconomic development will affect future environmental conditions and African lion range. We sought to understand the distribution of future suitable habitat for lions, considering two climate scenarios (SSP1-2.6 and SSP5-8.5) to encompass a range of possible future conditions.
+
+# **Approach** 
+
+To understand this problem, we utilized Maxent through the interactive web interface Wallace. Maxent utilizes species occurrence data input by the user as well as climate data (precipitation, temperature, etc.) to find the current range of suitable habitats for a specific species. It then allows the user to input a desired future timeframe and climate scenario to visualize changes in range over time. For this project, all other variables were held constant except the climate scenario (SSP1-2.6 and SSP5-8.5) to compare the differences in suitable habitat accurately. Once the analysis was performed for each scenario, the original and future maps were exported as TIF files and input into ArcGIS Pro. Using Raster Calculator, the values of the future map were subtracted from the original to yield a layer describing the change in habitat suitability between the two. 
+
+# **Results** 
+
+The final analysis produced two maps (Figure 1) showing the percentage change for African Lion habitats between the two climate scenarios. Visual assessment provided the following results:
+
+-   Western Africa was more suitable for African lions in SSP1-2.6 compared to SSP5-8.5
+
+-   Southern Africa was more suitable for African Lions in SSP5-8.5 compared to SSP1-2.6
+
+-   Regions in Central Africa that became more suitable for African Lions in SSP1-2.6 became less suitable for lions in SSP5-8.5
+
+    ![](figure_1.png)
+
+**Figure 1. African lion habitat suitability.** Percent change in habitat suitability for African lions (Panthera leo) from present day to 2041-60 under SSP1-2.6 (A-Sam Lance) and SSP5-8.5 (B-Liv Hemond).
+
+# **Conclusion** 
+
+The areas characterized by a negative change in habitat suitability values, shown in dark green on the map, should be prioritized for conservation. In effect, these areas are predicted to become increasingly suitable for lions in the future (henceforth these areas are referred to as “future suitable habitat”). It would be useful to compare the locations of future suitable habitat with existing nature reserves and protected areas to assess what degree of protection is already given to them, and whether there are key areas missing that would benefit from greater protections. Given the uncertainty over which SSP scenario will best match reality, managers may also want to prioritize conservation of future suitable habitat, especially where the areas overlap between the two SSP scenarios. 
+
+If lions shift their ranges to occupy new areas, it is worth considering the impact that may have on people living in those areas, especially if they are not accustomed to living near lions. While a charismatic and widely-regarded species, lions are also potentially dangerous to livestock and humans (Mills et al., 2023). To minimize human-wildlife conflict in a changing world, wildlife managers may want to consider proactively planning for human-lion coexistence in those communities based upon existing successful strategies (Blackburn et al., 2016).
