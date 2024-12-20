@@ -6,7 +6,7 @@ author:
     affiliation: Master of Environmental Science and Management at the The Bren School (UCSB)
 date: 12-1-2024
 categories: [Writing Sample, R, GIS] # self-defined categories
-image: St_Louis.jpg
+image: stlouis.jpg
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
@@ -93,18 +93,18 @@ Forests, agriculture, and residential use dominate land cover type in the Cahoki
 
 **Table 1.1. Land Use in the Cahokia-Joaquim Watershed.** Empirical and relative land cover type provided by National Land Cover Database (NLCD) 2019 raster.  
 
-|                       |                              |                    |
-|-----------------------|------------------------------|--------------------|
-| **Land Use Type**     | **Area (Square Kilometers)** | **Percent Cover**  |
-| Water                 | 144.59                       | 3.37%              |
-| Residential           | 1,063.32                     | 24.76%             |
-| Commercial/Industrial | 134.61                       | 3.13%              |
-| Barren Land           | 19.39                        | 0.45%              |
-| Forest                | 1,434.05                     | 33.42%             |
-| Rangeland             | 24.12                        | 0.56%              |
-| Cropland/Pasture      | 1,327.44                     | 30.90%             |
-| Wetland               | 147.76                       | 3.44%              |
-| **Total**             | **4,295.28**                 | 100%               |
+|                       |                              |                   |
+|-----------------------|------------------------------|-------------------|
+| **Land Use Type**     | **Area (Square Kilometers)** | **Percent Cover** |
+| Water                 | 144.59                       | 3.37%             |
+| Residential           | 1,063.32                     | 24.76%            |
+| Commercial/Industrial | 134.61                       | 3.13%             |
+| Barren Land           | 19.39                        | 0.45%             |
+| Forest                | 1,434.05                     | 33.42%            |
+| Rangeland             | 24.12                        | 0.56%             |
+| Cropland/Pasture      | 1,327.44                     | 30.90%            |
+| Wetland               | 147.76                       | 3.44%             |
+| **Total**             | **4,295.28**                 | 100%              |
 
 ![](1.12.jpg)
 
@@ -120,14 +120,14 @@ Several species declared endangered by either the federal government or the stat
 
 **Table 1.2. Endangered Species in the Cahokia-Joaquim Watershed.**
 
-|                                                          |
-|----------------------------------------------------------|
-| **Endangered Species in the Cahokia-Joaquim Watershed**  |
-| Aquatic Invertebrates                                    |
-| Mammals                                                  |
-| Amphibians & Reptiles                                    |
-| Plants                                                   |
-| Fish                                                     |
+|                                                         |
+|---------------------------------------------------------|
+| **Endangered Species in the Cahokia-Joaquim Watershed** |
+| Aquatic Invertebrates                                   |
+| Mammals                                                 |
+| Amphibians & Reptiles                                   |
+| Plants                                                  |
+| Fish                                                    |
 
 ## 1.10 Summary
 

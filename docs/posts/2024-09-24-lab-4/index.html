@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sam Lance, Priscilla Ta, Ashley Larsen">
+<meta name="dcterms.date" content="2024-12-01">
+<meta name="description" content="Finding the least cost path for jaguar movement in Southern Costa Rica for barrier removal">
 
-<title>Portfolio – SAM LANCE</title>
+<title>Least Cost Path for Jaguar Movement – SAM LANCE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +26,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href=".//media/lance_logo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//media/lance_logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,80 +72,22 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./media/lance_logo.png" alt="Alt text for logo" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../media/lance_logo.png" alt="Alt text for logo" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">SAM LANCE</span>
     </a>
   </div>
@@ -155,23 +98,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio_docs/resume.pdf"> 
+    <a class="nav-link" href="../../portfolio_docs/resume.pdf"> 
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio_docs/cv.pdf" target="_blank"> 
+    <a class="nav-link" href="../../portfolio_docs/cv.pdf" target="_blank"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item compact">
@@ -187,147 +130,110 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Least Cost Path for Jaguar Movement</h1>
+                  <div>
+        <div class="description">
+          Finding the least cost path for jaguar movement in Southern Costa Rica for barrier removal
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Writing Sample</div>
+                <div class="quarto-category">GIS</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author column-page-left">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">Sam Lance, Priscilla Ta, Ashley Larsen </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Master of Environmental Science and Management at the The Bren School (UCSB), Conservation Planning (ESM 270)
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta column-page-left">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 1, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="GIS">GIS <span class="quarto-category-count">(3)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Writing Sample">Writing Sample <span class="quarto-category-count">(3)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><strong>Background:</strong></a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem"><strong>Problem:</strong></a></li>
+  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach"><strong>Approach:</strong></a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><strong>Results:</strong></a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><strong>Conclusions:</strong></a></li>
+  <li><a href="#works-cited" id="toc-works-cited" class="nav-link" data-scroll-target="#works-cited"><strong>Works Cited</strong></a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Portfolio</h1>
-</div>
-
-
-
-<div class="quarto-title-meta column-page-left">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Writing Sample,R,GIS" data-listing-date-sort="1733032800000" data-listing-file-modified-sort="1734664400069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3039">
-<a href="./posts/2024-12-01-watershed-plan/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-12-01-watershed-plan/stlouis.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<section id="background" class="level1">
+<h1><strong>Background:</strong></h1>
+<p>As a keystone species, jaguars (Panthera onca) regulate trophic dynamics of tropical rainforests in Central America. According to the 2016 IUCN Red List of Threatened Species, P. onca is classified as near threatened after losing 50% of its historic range with population size continuing to decline over time (Quigley et al., 2017; Sanderson et al., 2002).<br>
 </p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-St.&nbsp;Louis, Missouri Watershed Management Plan
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Writing Sample'); return false;">
-Writing Sample
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('GIS'); return false;">
-GIS
-</div>
-</div>
-<div class="card-text listing-description">
-Watershed Management Plan for the city of St.&nbsp;Louis Missouri
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance, Natalie Mayer, Liv Hemond
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Writing Sample,GIS" data-listing-date-sort="1733032800000" data-listing-file-modified-sort="1734664111763" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="647">
-<a href="./posts/2024-09-01-270-lab1/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-09-01-270-lab1/african_lions.avif" class="thumbnail-image card-img" style="height: 150px;">
+</section>
+<section id="problem" class="level1">
+<h1><strong>Problem:</strong></h1>
+<p>Habitat loss and fragmentation associated with agricultural and urban expansion have contributed to P. onca population decline. In Southern Costa Rica, fragmentation led to the creation of two disconnected populations in the region, which reduces population viability and threatens P. onca persistence. Therefore, it is critical to identify opportunities to remove barriers to movement between core habitats and enhance connectivity.</p>
+</section>
+<section id="approach" class="level1">
+<h1><strong>Approach:</strong></h1>
+<p>We used Circuitscape to identify the least-cost path and barriers to P. onca movement between three core habitats in Southern Costa Rica. To identify the least-cost path, we used Linkage Mapper to build a network and map linkages using the core areas and a resistance layer created by Folger and Brock. The resistance layer includes surface features such as roads, elevation, and land cover that can influence species movement and landscape connectivity. Barriers to movement were determined using the Barrier Mapper tool within Linkage Mapper set a detection radius of 1000m. Barrier Mapper identifies critical connectivity barriers and reveals the value (benefit) of barrier removal to improve connectivity. In our analysis, we reclassified values greater than 0.75 in the barrier raster to represent opportunities where the value and benefit of barrier removal are high. To facilitate our understanding of broader land use influence on connectivity, we reclassified specific land use categories to four bins: agriculture, natural areas, urban, and water. Agriculture includes coffee, teak, palm, and pineapple plantations, as well as pasture. Natural areas include forests, mangroves, natural palm forests, paramos, and wetlands.&nbsp;</p>
+</section>
+<section id="results" class="level1">
+<h1><strong>Results:</strong></h1>
+<p>The least-cost path connecting P. onca core habitat in Corcovado, Piedras Blancas, La Amisted National Parks primarily crosses natural areas and avoids agricultural land (Fig 1,2). Within natural areas, P. onca preferably navigates through primary and secondary forests. Connectivity barriers occur where agriculture intersects with the least cost path (Fig 1,2).&nbsp;</p>
+</section>
+<section id="conclusions" class="level1">
+<h1><strong>Conclusions:</strong></h1>
+<p>Our analysis revealed barriers along the least-cost path that would be most beneficial to improve habitat connectivity between core P. onca habitat. These areas are not exclusively natural forest, however, and include agricultural parcels that would be difficult to remove. Land owners could oppose the project, as a one time payment for their land would deprive them of the longer term income they could have from continuously farming. Easements or payments for ecosystem services could alleviate this problem, however, as farmers could allot a certain amount of their plot to fallow and become forest while still actively farming.</p>
+<p>If land purchases or easements could be acquired, the soil and vegetation in these lands are likely heavily degraded due to extensive agriculture. This would require some degree of restoration to make the habitat more navigable for P. onca. The costs of a project like this would be incredibly high, and would likely need to be fronted by outside agencies like the Nature Conservancy or the World Wildlife Fund. Additionally, local groups could oppose the movement of P. onca near their land. Although they are keystone species whose protection could ensure greater regional conservation, they are dangerous animals that have the potential to harm humans and cattle.&nbsp;</p>
+<p><img src="pta_fig1.png" class="img-fluid"><br>
+<strong>Figure 1. Exploring Barriers to Panthera onca Movement in Costa Rica.</strong> Connectivity barriers were identified along the least-cost path of P. onca movement between the two western core habitat in Southern Costa Rica. Dark orange polygons indicate areas where barrier removal is highly beneficial to connectivity, while light orange indicates where removal is less beneficial (Priscilla Ta).<br>
+<img src="slance_fig2.png" class="img-fluid"></p>
+<p><strong>Figure 2. Relative benefits of restoring areas in Costa Rica.</strong> Barriers to connectivity between the La Amisted and Piedras Blancas National Parks. Light and dark grey patches indicate the presence of agricultural and natural lands in these barrier areas. The positive impact of removing these barriers is greater the closer to the least cost path (dotted line), and lower the further away (Sam Lance).<br>
 </p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Habitat Suitability for African Lion Populations Under Climate Change
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Writing Sample'); return false;">
-Writing Sample
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('GIS'); return false;">
-GIS
-</div>
-</div>
-<div class="card-text listing-description">
-Understanding how African Lion habitats will change under different climate change predictions
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance, Liv Hemond, Ashley Larsen
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="Writing Sample,GIS" data-listing-date-sort="1733032800000" data-listing-file-modified-sort="1734664275720" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="734">
-<a href="./posts/2024-09-24-lab-4/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-09-24-lab-4/jaguars.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Least Cost Path for Jaguar Movement
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Writing Sample'); return false;">
-Writing Sample
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('GIS'); return false;">
-GIS
-</div>
-</div>
-<div class="card-text listing-description">
-Finding the least cost path for jaguar movement in Southern Costa Rica for barrier removal
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance, Priscilla Ta, Ashley Larsen
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</section>
+<section id="works-cited" class="level1">
+<h1><strong>Works Cited</strong></h1>
+<p>Quigley, H., Foster, R., Petracca, L., Payan, E., Salom, R., &amp; Harmsen, B. (2017). IUCN Red List of Threatened Species: Panthera onca. IUCN Red List of Threatened Species. <a href="https://www.iucnredlist.org/fr" class="uri">https://www.iucnredlist.org/fr</a></p>
+<p>Sanderson, E., Redford, K., Chetkiewicz, C., Medellin, R., Rabinowitz, A., Robinson, J., &amp; Taber, A. (2002). Planning to Save a Species: The Jaguar as a Model. Conservation Biology, 16(1), 58–72.</p>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
