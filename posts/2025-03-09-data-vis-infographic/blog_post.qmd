@@ -1,0 +1,322 @@
+---
+title: "Composite Volcanoes and the Ring of Fire"
+description: "Creating an infographic on the distribution of composite volcanoes around the world, the rock types that make up these volcanoes, and the geologic environments they form in."
+author:
+  - name: Sam Lance
+    affiliation: Master of Environmental Science and Management at the The Bren School (UCSB), Data Visualization (EDS 240)
+date: 9 March, 2025
+categories: [Data Visualization, R, Graphic Design] # self-defined categories
+image: ranier.jpg
+format:
+  html:
+    code-fold: true
+    toc: false
+    number-sections: true
+    embed-resources: true
+    theme: Lux
+editor: visual
+execute:
+  echo: true
+  message: false
+  warning: false
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+```{r}
+
+#| echo: true
+#| message: false
+
+library(ggplot2)
+library(tidyverse)
+library(here)
+library(janitor)
+library(patchwork)
+library(lubridate)
+library(forcats)
+library(gghighlight)
+library(stringr)
+library(maps)
+library(ggtext)
+library(showtext)
+library(scales)
+library(sf)
+library(rnaturalearth)
+
+#importing colors 
+dorange <- c("#BA2D0B")
+porange <- c("#ffba08")
+new_orange <- c("#f65026")
+v_grey <- c("#c0c0c0")
+v_black <- c("#000000")
+v_white <- c("white")
+
+#fonts
+font_add_google(name = "Roboto", family = "roboto")
+showtext_auto()
+
+```
+
+
+![Mount Ranier, a Composite Volcano. Image Courtesy of David Prasad from Welches, OR., United States, CC BY-SA 2.0 <https://creativecommons.org/licenses/by-sa/2.0>, via Wikimedia Commons](www/ranier.jpg){fig-alt="Photo of Mount Ranier from a Road in Welches, Oregon."}
+
+## The Personal Motivations
+
+With my degree in Geosciences, my academic interests generally return to the abiotic factors in our world. I have always been interested in volcanoes and their relationship to the movement of Earth's tectonic plates, but have never had the opportunity to learn more outside of introductory geology courses.
+
+In looking for a dataset to create an infographic on, I discovered the Smithsonian Institution National Museum of Natural History's Global Volcanism Program's dataset. Detailing all known volcanic eruptions from the last 12,000 years, it provided the perfect opportunity for me to learn more about volcanoes and practice my skills in R.
+
+After looking into the data more closely, I realized it showed very clear trends that specific types of volcanoes, composite volcanoes, were clustered around the Pacific Ocean. This creates the famous Ring of Fire, formed due to the unique tectonic setting of the region, which naturally produces these large, incredibly destructive volcanoes. While many people learn about the Ring of Fire in middle school science courses, many do not know the mechanisms behind its formation. In addition to satisfying my own personal desire to learn about volcanoes, this infographic is meant to provide this information to a broader audience in an accessible way.
+
+![Sam Sitting on a Rock on a Geology Field Trip to Lone Pine](www/sam_sitting.jpg){fig-alt="Photo of the Author with Short Brown Hair Wearing a Hat, Sitting on Rocks with a Blue Bakground, on a Geology Field Trip"}
+
+## The Questions
+
+When designing this visualization, I wanted to select and answer three questions with my plots that would provide a non-scientific audience a better understanding of the Ring of Fire and the mechanics behind its formation. These questions are:
+
+**1. Where are composite volcanoes located around the world?**
+
+**2. What type of rock are composite volcanoes made of?**
+
+**3. What geologic environment do composite volcanoes primarily form in?**
+
+Each question inherently links to one another, as composite volcanoes form in subduction zones, which primarily generate Andesite, which are located around the borders of the Pacific Ocean. This creates a strong, intertwined narriative that will communicate the information in a clear and concise way.
+
+## The Visualization
+
+![Composite Volcano Data Visualization](www/volc_vis.jpg){fig-alt="Final infographic showing the high concentration of volcanoes around the ring of fire. It also shows that these volcanoes are primarily made of andesite and form in subduction zones."}
+
+## Individual Plots
+
+### Wrangling
+
+Prior to creating any visualizations, my data needed moderate wrangling. All dates in the dataset were written as "2000 BCE", which needed to be converted into a numeric to be used in any analysis. Additionally, for this analysis I only wanted to look at eruptions with a confirmed eruption date after 0 CE, so I filtered out all eruptions with an eruption date of "unknown".
+
+```{r}
+
+#| echo: true
+#| message: false
+
+volcano_og <- read.csv(here("posts", "2025-03-09-data-vis-infographic", "data", "volcano_list.csv"))
+volcano_pop_og <- read.csv(here("posts", "2025-03-09-data-vis-infographic", "data", "volcano_pop.csv"))
+
+volcano_mod <- volcano_og |>
+  clean_names() |>
+  filter(last_known_eruption != "Unknown") |>
+  mutate(
+    eruption_year = case_when(
+      grepl("BCE", last_known_eruption) ~ -as.numeric(gsub(" BCE", "", last_known_eruption)),
+      grepl("CE", last_known_eruption)  ~ as.numeric(gsub(" CE", "", last_known_eruption)),
+      TRUE ~ as.numeric(last_known_eruption))) |>
+  arrange(eruption_year) |>
+  filter(eruption_year > 0)
+
+#CREATING MAP OF VOLCANOES
+world <- ne_download(scale = 110, type = "countries", category = "cultural")
+
+```
+
+### Map of Composite Volcanoes
+
+This figure is meant to answer the first question of the three: **where are composite volcanoes located around the world**? The map shows the location of all composite volcanoes in the dataset, with the color of the point representing the tectonic setting of the volcano. The map is centered on the Pacific Ocean, with the Ring of Fire clearly visible. This provides a clear visual representation of the data, and allows the viewer to see the clear clustering of composite volcanoes around the Pacific Ocean.
+
+```{r}
+
+#| echo: true
+#| message: false
+#| 
+#FILTERING COMPOSITE VOLCANOES
+composite_volcanoes <- volcano_mod |>
+  filter(volcano_landform == "Composite") 
+
+composite_volcanoes_sum <- volcano_mod |>
+  filter(volcano_landform == "Composite") |>
+  group_by(tectonic_setting) |>
+  summarize(count = n())
+
+other_volcanoes <- volcano_mod |>
+  filter(volcano_landform != "Composite")
+
+volcano_map <- ggplot(data = world) +
+  geom_sf(fill = v_grey, color = v_grey) +
+  geom_point(data = composite_volcanoes, 
+             aes(x = longitude, y = latitude, color = dorange), 
+             size = 1.25) +
+  scale_color_identity() +  # Use scale_color_identity to preserve the colors specified
+  theme_void() +
+  labs(title = NULL,
+       x = NULL, y = NULL) +
+  theme(legend.position = NULL, 
+        legend.title = element_blank(),
+        plot.background = element_rect(fill = v_black))
+
+#volcano_map
+
+# ggsave(
+#   filename = here::here("final_images", "volcano_map.png"),
+#   plot = volcano_map, 
+#   device = "png",
+#   width = 8, 
+#   height = 7,
+#   unit = "in"
+# )
+
+```
+
+### Bar Chart of Composite Volcano Rock Type
+
+This figure is meant to answer the second question of the three: **what type of rock are composite volcanoes made of**? The bar chart reveals that the majority of composite volcanoes are Andesites, with Basalts and Trachyandesites also being common.
+
+```{r}
+#CREATING NEW FILTERED DATASET 
+
+#| echo: true
+#| message: false
+
+#levels(as.factor(volcano_mod$dominant_rock_type))
+
+rock_type <- volcano_mod |>
+  filter(eruption_year > 0) |>
+  filter(last_known_eruption != "Unknown") |>
+  filter(!dominant_rock_type %in% c("No Data (checked)", "")) |>
+  filter(volcano_landform == "Composite") |>
+  mutate(rock_type = recode(dominant_rock_type,
+                           "Andesite / Basaltic Andesite" = "Andesite",
+                           "Basalt / Picro-Basalt" = "Basalt",
+                           "Trachybasalt / Tephrite Basanite" = "Trachybasalt",
+                           "Trachyandesite / Basaltic Trachyandesite" = "Trachyandesite",
+                           "Phono-tephrite /  Tephri-phonolite" = "Other",
+                           "Trachyte / Trachydacite" = "Trachyte")) 
+
+rock_plot <- rock_type |>
+  ggplot(aes(x = fct_rev(fct_infreq(rock_type)))) +  # Reverse the order of the factor levels
+  geom_bar(fill = new_orange, alpha = 0.8) +
+  geom_text(stat = "count", aes(label = ..count.., hjust = -0.2), color = "white", size = 12) +  # Add count labels
+  coord_flip() +
+  scale_x_discrete(expand=c(0,0)) +
+  #scale_x_discrete(expand = expansion(add = c(-0.5, 0.05))) +
+  labs(x = NULL, 
+       y = "Total Number of Eruptions", 
+       title = "Composite Volcanoes are Predominatly Andesites",
+       subtitle = "The main rock type that makes up composite volcanoes around the world are andesites") +
+  gghighlight(dominant_rock_type == "Andesite / Basaltic Andesite", 
+              use_direct_label = FALSE) +
+  theme(axis.text.x = element_blank(),
+        axis.text.y = element_text(color= v_grey, 
+                                   size = 40, 
+                                   family = "roboto"),
+        axis.title.y = element_text(color= v_grey, 
+                                    size = 40, 
+                                    family = "roboto"),
+        plot.title = element_text(color= v_grey, 
+                                  size = 50, 
+                                  family = "roboto",
+                                  face = "bold"),
+        plot.subtitle = element_text(color= v_grey, 
+                                     size = 35, 
+                                     family = "roboto",
+                                     face = "italic"),
+        plot.background = element_rect(fill = v_black),
+        panel.background = element_rect(fill = v_black),
+        panel.grid = element_line(color = v_black),
+        )
+
+# ggsave(
+#   filename = here::here("final_images", "rock_type.png"),
+#   plot = rock_plot, 
+#   device = "png",
+#   width = 9, 
+#   height = 4.5,
+#   unit = "in"
+# )
+# rock_plot
+
+```
+
+### Donut Chart of Composite Volcano Formation
+
+The final figure in the infographic is meant to answer the third question of the three: **what geologic environment do composite volcanoes primarily form in**? The donut chart shows that the majority of composite volcanoes form in subduction zones, with rift zones and hotspots being less common.
+
+```{r}
+
+volcano_loc <- read_csv(here("posts", "2025-03-09-data-vis-infographic", "data", "volcano_count.csv"))
+
+# Compute percentages
+volcano_loc$fraction = volcano_loc$eruption_count / sum(volcano_loc$eruption_count)
+
+# Compute the cumulative percentages (top of each rectangle)
+volcano_loc$ymax = cumsum(volcano_loc$fraction)
+
+# Compute the bottom of each rectangle
+volcano_loc$ymin = c(0, head(volcano_loc$ymax, n=-1))
+
+zone <- ggplot(volcano_loc, aes(ymax=ymax, 
+                                ymin=ymin, 
+                                xmax=4, 
+                                xmin=3, 
+                                fill=tectonic_setting)) +  # Remove the color aesthetic
+  geom_rect(color = NA) +  # Set the outline color to transparent
+  coord_polar(theta="y") + 
+  xlim(c(2, 4)) +
+  scale_fill_manual(values = c("#404040",  "#808080", porange)) +
+  theme_void() +
+  theme(plot.background = element_rect(fill = v_black),
+        panel.background = element_rect(fill = v_black),
+        legend.position = "none")
+
+# zone
+# 
+# ggsave(
+#   filename = here::here("final_images", "form_zone.png"),
+#   plot = zone, 
+#   device = "png",
+#   width =5, 
+#   height =5,
+#   unit = "in"
+# )
+
+```
+
+### Creating the Infographic
+
+To add final annotations and additional design elements to the infographic, I brought each plot into Powerpoint. This software gave me the flexibility to add text annotations, small volcano graphics, and plot components that would have been significantly more difficult when working in R.
+
+## Design Elements 
+
+::: {.panel-tabset}
+## Graphic Form + General Design
+
+When brainstorming my design, all design elements centered around my conception of the map. I wanted the Ring of Fire to be fully visible with the Pacific Ocean centered, and text taking up the blank space in the middle. This provides visual context for the data, as the sheer amount of composite volcanoes and their clear spacing would be unclear without this spatial component.
+
+From there, I knew I needed to show how overwhelming amount of volcanoes that were made up andesite and that the majority of volcanoes are formed in subduction zones are compared to other types. A mix of a bar chart using gg_highlight and a donut chart with the same visual effect provided the stark contrast needed to provide this emphasis. I placed these below my map, and right below my last annotation in the Pacific Ocean, so the eye naturally gravitates towards them after fully reading the text.
+
+## Text
+
+The overall story of the infographic is provided by the text annotations. I wanted to create a series of questions in my walkthrough, and have the next figure help provide the answer. Additionally, since the topic is foreign to most of my viewers, I wanted to make sure I provided scientific background to terms people might not have heard before such as subduction or andesite. Each annotation is meant to be directly related to a graphic, and provide clear yet accessible context. For this reason, text on the actual graphs was kept incredibly minimal, to let the annotations speak for themselves.
+
+## Theme + Color + Typography
+
+To stay with the volcano theme, I chose a color palette that reminded me of different elements of volcanoes: grey for volcanic ash, black for obsidian formed by composite volcanoes, and my highlighting colors shades of red and orange for magma. While I likely could have added some fun flame text throughout the infographic, I wanted this to be something that could be sent to a teacher or used in a classroom, so I kept the design more professional and used the Roboto font throughout.
+
+
+## Contextualization
+
+## Message
+
+## Accessibility
+
+While my infographic does not specifically use a colorblind friendly palette, the majority of the graphic is black, white, and grey. All data is conveyed both with visual elements as well as color, so a completely colorblind viewer of the graphic would not be missing any information that a viewer with full color vision would have.
+
+## DEI
+
+For this project, the goal was to make knowledge about composite volcanoes more accessible to a genral audience. While this does innately promote the inclusion element of DEI, the project does not view the data through a DEI lens. A future infographic could use this same data to see what populations could be most affected by volcanoes, especially at risk communities. 
+
+
+:::
+
+
+## Acknowledgements
+
+This project is coming together with the help of Sam Shanny-Csik the instructor of EDS 240 - Data Visualization at the Bren School at UCSB. The data used in this project is from the Smithsonian Institution National Museum of Natural History's Global Volcanism Program, and the map data is from the Natural Earth database.
+
+![Author Diving Deep into Volcanoes for Her Project, Feeling Like Gollum](www/sam_gollum.jpg){fig-alt="Sam Lance Photoshopped Hereself onto a Photo of Gollum from Lord of the Rings Falling into a Volcano as a Joke."}
