@@ -324,3 +324,6 @@ For this project, the goal was to make knowledge about composite volcanoes more 
 This project is coming together with the help of Sam Shanny-Csik the instructor of EDS 240 - Data Visualization at the Bren School at UCSB. The data used in this project is from the Smithsonian Institution National Museum of Natural History's Global Volcanism Program, and the map data is from the Natural Earth database.
 
 ![Author Diving Deep into Volcanoes for Her Project, Feeling Like Gollum](www/sam_gollum.jpg){fig-alt="Sam Lance Photoshopped Hereself onto a Photo of Gollum from Lord of the Rings Falling into a Volcano as a Joke."}
+## Code
+
+All code used to create the visualizations is attached above. This does not include annotations and graphic design elements, which were added in Powerpoint. 
