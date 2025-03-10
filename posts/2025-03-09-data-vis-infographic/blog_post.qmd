@@ -299,13 +299,11 @@ The overall story of the infographic is provided by the text annotations. I want
 To stay with the volcano theme, I chose a color palette that reminded me of different elements of volcanoes: grey for volcanic ash, black for obsidian formed by composite volcanoes, and my highlighting colors shades of red and orange for magma. While I likely could have added some fun flame text throughout the infographic, I wanted this to be something that could be sent to a teacher or used in a classroom, so I kept the design more professional and used the Roboto font throughout.
 
 
-## Contextualization
-
-Each plot on the graph is meant to work together to contextualize the others. While the map alone or bar + donut plots alone could provide valuable information about composite volcanoes, together they showcase the broader overall trends and provide a more in-depth understanding. The captions support this partnership, providing a guiding narriative that keeps the viewer moving down the graphic. 
-
-## Message
+## Message + Contextualization
 
 The overall message of this infographic is that composite volcanoes form in the Ring of Fire due to the unique tectonic setting of the region. Plain language and a minimal color scheme help provide a visually interesting but minimally technical graphic that can be understood by a mass audience. 
+
+Each plot on the graph is meant to work together to contextualize the others. While the map alone or bar + donut plots alone could provide valuable information about composite volcanoes, together they showcase the broader overall trends and provide a more in-depth understanding. The captions support this partnership, providing a guiding narriative that keeps the viewer moving down the graphic. 
 
 ## Accessibility
 
@@ -324,6 +322,8 @@ For this project, the goal was to make knowledge about composite volcanoes more 
 This project is coming together with the help of Sam Shanny-Csik the instructor of EDS 240 - Data Visualization at the Bren School at UCSB. The data used in this project is from the Smithsonian Institution National Museum of Natural History's Global Volcanism Program, and the map data is from the Natural Earth database.
 
 ![Author Diving Deep into Volcanoes for Her Project, Feeling Like Gollum](www/sam_gollum.jpg){fig-alt="Sam Lance Photoshopped Hereself onto a Photo of Gollum from Lord of the Rings Falling into a Volcano as a Joke."}
+
+
 ## Code
 
-All code used to create the visualizations is attached above. This does not include annotations and graphic design elements, which were added in Powerpoint. 
+Each plot on the graph is meant to work together to contextualize the others. While the map alone or bar + donut plots alone could provide valuable information about composite volcanoes, together they showcase the broader overall trends and provide a more in-depth understanding. The captions support this partnership, providing a guiding narriative that keeps the viewer moving down the graphic. 
