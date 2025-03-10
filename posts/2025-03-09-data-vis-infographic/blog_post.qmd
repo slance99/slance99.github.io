@@ -62,17 +62,17 @@ showtext_auto()
 
 ## The Personal Motivations
 
-With my degree in Geosciences, my academic interests generally return to the abiotic factors in our world. I have always been interested in volcanoes and their relationship to the movement of Earth's tectonic plates, but have never had the opportunity to learn more outside of introductory geology courses.
+As a geologist turned geomorphologist, my academic interests generally return to the abiotic factors in our world. I have always been interested in volcanoes and their relationship to the movement of Earth's tectonic plates, but have never had the opportunity to learn more outside of my introductory geology courses.
 
-In looking for a dataset to create an infographic on, I discovered the Smithsonian Institution National Museum of Natural History's Global Volcanism Program's dataset. Detailing all known volcanic eruptions from the last 12,000 years, it provided the perfect opportunity for me to learn more about volcanoes and practice my skills in R.
+As I was looking for an interesting dataset to create an infographic about, I discovered the Smithsonian Institution National Museum of Natural History's Global Volcanism Program's dataset. Detailing all known volcanic eruptions from the last 12,000 years, it provided the perfect opportunity for me to learn more about volcanoes and practice my skills in R.
 
-After looking into the data more closely, I realized it showed very clear trends that specific types of volcanoes, composite volcanoes, were clustered around the Pacific Ocean. This creates the famous Ring of Fire, formed due to the unique tectonic setting of the region, which naturally produces these large, incredibly destructive volcanoes. While many people learn about the Ring of Fire in middle school science courses, many do not know the mechanisms behind its formation. In addition to satisfying my own personal desire to learn about volcanoes, this infographic is meant to provide this information to a broader audience in an accessible way.
+After looking into the data more closely, I realized it showed very clear trends that specific types of volcanoes, composite volcanoes, were clustered around the Pacific Ocean. This creates the famous Ring of Fire, formed due to the unique tectonic setting of the region, which naturally produces large, incredibly destructive volcanoes. While many people learn about volcanoes in middle school science courses, many do not know the mechanisms behind their formation. This infographic is meant to provide an opportunity to re-up that knowledge, and learn a bit more about composite volcanoes and how they are linked to the Ring of Fire. 
 
 ![Sam Sitting on a Rock on a Geology Field Trip to Lone Pine](www/sam_sitting.jpg){fig-alt="Photo of the Author with Short Brown Hair Wearing a Hat, Sitting on Rocks with a Blue Bakground, on a Geology Field Trip"}
 
 ## The Questions
 
-When designing this visualization, I wanted to select and answer three questions with my plots that would provide a non-scientific audience a better understanding of the Ring of Fire and the mechanics behind its formation. These questions are:
+When designing this visualization, I wanted to answer three questions with my plots that would provide a non-scientific audience a better understanding of composite volcanoes. These questions are:
 
 **1. Where are composite volcanoes located around the world?**
 
@@ -80,7 +80,7 @@ When designing this visualization, I wanted to select and answer three questions
 
 **3. What geologic environment do composite volcanoes primarily form in?**
 
-Each question inherently links to one another, as composite volcanoes form in subduction zones, which primarily generate Andesite, which are located around the borders of the Pacific Ocean. This creates a strong, intertwined narriative that will communicate the information in a clear and concise way.
+Each question inherently links to one another, as composite volcanoes form in subduction zones, which primarily generate Andesite, and are primarily located around the borders of the Pacific Ocean. This creates a strong, intertwined narriative that will communicate the information in a clear and concise way.
 
 ## The Visualization
 
@@ -118,7 +118,7 @@ world <- ne_download(scale = 110, type = "countries", category = "cultural")
 
 ### Map of Composite Volcanoes
 
-This figure is meant to answer the first question of the three: **where are composite volcanoes located around the world**? The map shows the location of all composite volcanoes in the dataset, with the color of the point representing the tectonic setting of the volcano. The map is centered on the Pacific Ocean, with the Ring of Fire clearly visible. This provides a clear visual representation of the data, and allows the viewer to see the clear clustering of composite volcanoes around the Pacific Ocean.
+This figure is meant to answer the first question of the three: **where are composite volcanoes located around the world**? The map shows the location of all composite volcanoes in the dataset, with the color of the point representing the tectonic setting of the volcano. The map is centered on the Pacific Ocean, with the Ring of Fire clearly visible. This allows the viewer to see the  clustering of composite volcanoes around the Pacific Ocean.
 
 ```{r}
 
@@ -165,7 +165,7 @@ volcano_map <- ggplot(data = world) +
 
 ### Bar Chart of Composite Volcano Rock Type
 
-This figure is meant to answer the second question of the three: **what type of rock are composite volcanoes made of**? The bar chart reveals that the majority of composite volcanoes are Andesites, with Basalts and Trachyandesites also being common.
+This figure is meant to answer the question: **what type of rock are composite volcanoes made of**? The bar chart reveals that the majority of composite volcanoes are Andesites, with Basalts and Trachyandesites also being common.
 
 ```{r}
 #CREATING NEW FILTERED DATASET 
@@ -235,7 +235,7 @@ rock_plot <- rock_type |>
 
 ### Donut Chart of Composite Volcano Formation
 
-The final figure in the infographic is meant to answer the third question of the three: **what geologic environment do composite volcanoes primarily form in**? The donut chart shows that the majority of composite volcanoes form in subduction zones, with rift zones and hotspots being less common.
+The final figure in the infographic is meant to answer the question: **what geologic environment do composite volcanoes primarily form in**? The donut chart shows that the majority of composite volcanoes form in subduction zones, with rift zones and hotspots being less common.
 
 ```{r}
 
@@ -286,9 +286,9 @@ To add final annotations and additional design elements to the infographic, I br
 ::: {.panel-tabset}
 ## Graphic Form + General Design
 
-When brainstorming my design, all design elements centered around my conception of the map. I wanted the Ring of Fire to be fully visible with the Pacific Ocean centered, and text taking up the blank space in the middle. This provides visual context for the data, as the sheer amount of composite volcanoes and their clear spacing would be unclear without this spatial component.
+When brainstorming my design, all design elements centered around my conception of the map. I wanted the Ring of Fire to be fully visible with the Pacific Ocean centered, and text taking up the blank space in the middle. This allowed me to show the striking spatial clustering in this data, while also leaving me space to provide additioanl information and annotations. 
 
-From there, I knew I needed to show how overwhelming amount of volcanoes that were made up andesite and that the majority of volcanoes are formed in subduction zones are compared to other types. A mix of a bar chart using gg_highlight and a donut chart with the same visual effect provided the stark contrast needed to provide this emphasis. I placed these below my map, and right below my last annotation in the Pacific Ocean, so the eye naturally gravitates towards them after fully reading the text.
+From there, I knew I needed to show how overwhelming amount of volcanoes that were made up andesite and formed in subduction zones. A mix of a bar chart created using gg_highlight and a donut chart with the same visual effect were perfect to emphaisize this point. I placed these below my map, and right below my last annotation in the Pacific Ocean, so the eye naturally gravitates towards them after fully reading the text.
 
 ## Text
 
@@ -301,7 +301,11 @@ To stay with the volcano theme, I chose a color palette that reminded me of diff
 
 ## Contextualization
 
+Each plot on the graph is meant to work together to contextualize the others. While the map alone or bar + donut plots alone could provide valuable information about composite volcanoes, together they showcase the broader overall trends and provide a more in-depth understanding. The captions support this partnership, providing a guiding narriative that keeps the viewer moving down the graphic. 
+
 ## Message
+
+The overall message of this infographic is that composite volcanoes form in the Ring of Fire due to the unique tectonic setting of the region. Plain language and a minimal color scheme help provide a visually interesting but minimally technical graphic that can be understood by a mass audience. 
 
 ## Accessibility
 
