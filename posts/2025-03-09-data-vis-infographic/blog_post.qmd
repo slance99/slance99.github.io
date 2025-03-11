@@ -326,4 +326,188 @@ This project is coming together with the help of Sam Shanny-Csik the instructor 
 
 ## Code
 
-Each plot on the graph is meant to work together to contextualize the others. While the map alone or bar + donut plots alone could provide valuable information about composite volcanoes, together they showcase the broader overall trends and provide a more in-depth understanding. The captions support this partnership, providing a guiding narriative that keeps the viewer moving down the graphic. 
+The code below is the full code used to create the visualizations in this infographic. This does not include all annotations or other transformations done to the maps in Powerpoint, but shows all base graphs and data wrangling done to create the visualization. 
+
+```{r}
+#LOADING LIBRARIES 
+library(ggplot2)
+library(tidyverse)
+library(here)
+library(janitor)
+library(patchwork)
+library(lubridate)
+library(forcats)
+library(gghighlight)
+library(stringr)
+library(maps)
+library(ggtext)
+library(showtext)
+library(scales)
+library(sf)
+library(rnaturalearth)
+
+#importing colors 
+dorange <- c("#BA2D0B")
+porange <- c("#ffba08")
+new_orange <- c("#f65026")
+v_grey <- c("#c0c0c0")
+v_black <- c("#000000")
+v_white <- c("white")
+
+#fonts
+font_add_google(name = "Roboto", family = "roboto")
+showtext_auto()
+
+#WRANGLING AND IMPORTING 
+volcano_og <- read.csv(here("posts", "2025-03-09-data-vis-infographic", "data", "volcano_list.csv"))
+volcano_pop_og <- read.csv(here("posts", "2025-03-09-data-vis-infographic", "data", "volcano_pop.csv"))
+
+volcano_mod <- volcano_og |>
+  clean_names() |>
+  filter(last_known_eruption != "Unknown") |>
+  mutate(
+    eruption_year = case_when(
+      grepl("BCE", last_known_eruption) ~ -as.numeric(gsub(" BCE", "", last_known_eruption)),
+      grepl("CE", last_known_eruption)  ~ as.numeric(gsub(" CE", "", last_known_eruption)),
+      TRUE ~ as.numeric(last_known_eruption))) |>
+  arrange(eruption_year) |>
+  filter(eruption_year > 0)
+
+#CREATING MAP OF VOLCANOES
+world <- ne_download(scale = 110, type = "countries", category = "cultural")
+
+#FILTERING COMPOSITE VOLCANOES
+composite_volcanoes <- volcano_mod |>
+  filter(volcano_landform == "Composite") 
+
+composite_volcanoes_sum <- volcano_mod |>
+  filter(volcano_landform == "Composite") |>
+  group_by(tectonic_setting) |>
+  summarize(count = n())
+
+other_volcanoes <- volcano_mod |>
+  filter(volcano_landform != "Composite")
+
+volcano_map <- ggplot(data = world) +
+  geom_sf(fill = v_grey, color = v_grey) +
+  geom_point(data = composite_volcanoes, 
+             aes(x = longitude, y = latitude, color = dorange), 
+             size = 1.25) +
+  scale_color_identity() +  # Use scale_color_identity to preserve the colors specified
+  theme_void() +
+  labs(title = NULL,
+       x = NULL, y = NULL) +
+  theme(legend.position = NULL, 
+        legend.title = element_blank(),
+        plot.background = element_rect(fill = v_black))
+
+#volcano_map
+
+# ggsave(
+#   filename = here::here("final_images", "volcano_map.png"),
+#   plot = volcano_map, 
+#   device = "png",
+#   width = 8, 
+#   height = 7,
+#   unit = "in"
+# )
+
+#levels(as.factor(volcano_mod$dominant_rock_type))
+
+#ROCK TYPE FILTERING 
+rock_type <- volcano_mod |>
+  filter(eruption_year > 0) |>
+  filter(last_known_eruption != "Unknown") |>
+  filter(!dominant_rock_type %in% c("No Data (checked)", "")) |>
+  filter(volcano_landform == "Composite") |>
+  mutate(rock_type = recode(dominant_rock_type,
+                           "Andesite / Basaltic Andesite" = "Andesite",
+                           "Basalt / Picro-Basalt" = "Basalt",
+                           "Trachybasalt / Tephrite Basanite" = "Trachybasalt",
+                           "Trachyandesite / Basaltic Trachyandesite" = "Trachyandesite",
+                           "Phono-tephrite /  Tephri-phonolite" = "Other",
+                           "Trachyte / Trachydacite" = "Trachyte")) 
+
+#ROCK TYPE PLOT 
+rock_plot <- rock_type |>
+  ggplot(aes(x = fct_rev(fct_infreq(rock_type)))) +  # Reverse the order of the factor levels
+  geom_bar(fill = new_orange, alpha = 0.8) +
+  geom_text(stat = "count", aes(label = ..count.., hjust = -0.2), color = "white", size = 12) +  # Add count labels
+  coord_flip() +
+  scale_x_discrete(expand=c(0,0)) +
+  #scale_x_discrete(expand = expansion(add = c(-0.5, 0.05))) +
+  labs(x = NULL, 
+       y = "Total Number of Eruptions", 
+       title = "Composite Volcanoes are Predominatly Andesites",
+       subtitle = "The main rock type that makes up composite volcanoes around the world are andesites") +
+  gghighlight(dominant_rock_type == "Andesite / Basaltic Andesite", 
+              use_direct_label = FALSE) +
+  theme(axis.text.x = element_blank(),
+        axis.text.y = element_text(color= v_grey, 
+                                   size = 40, 
+                                   family = "roboto"),
+        axis.title.y = element_text(color= v_grey, 
+                                    size = 40, 
+                                    family = "roboto"),
+        plot.title = element_text(color= v_grey, 
+                                  size = 50, 
+                                  family = "roboto",
+                                  face = "bold"),
+        plot.subtitle = element_text(color= v_grey, 
+                                     size = 35, 
+                                     family = "roboto",
+                                     face = "italic"),
+        plot.background = element_rect(fill = v_black),
+        panel.background = element_rect(fill = v_black),
+        panel.grid = element_line(color = v_black),
+        )
+
+# ggsave(
+#   filename = here::here("final_images", "rock_type.png"),
+#   plot = rock_plot, 
+#   device = "png",
+#   width = 9, 
+#   height = 4.5,
+#   unit = "in"
+# )
+# rock_plot
+
+#DONUT PLOT 
+volcano_loc <- read_csv(here("posts", "2025-03-09-data-vis-infographic", "data", "volcano_count.csv"))
+
+# Compute percentages
+volcano_loc$fraction = volcano_loc$eruption_count / sum(volcano_loc$eruption_count)
+
+# Compute the cumulative percentages (top of each rectangle)
+volcano_loc$ymax = cumsum(volcano_loc$fraction)
+
+# Compute the bottom of each rectangle
+volcano_loc$ymin = c(0, head(volcano_loc$ymax, n=-1))
+
+zone <- ggplot(volcano_loc, aes(ymax=ymax, 
+                                ymin=ymin, 
+                                xmax=4, 
+                                xmin=3, 
+                                fill=tectonic_setting)) +  # Remove the color aesthetic
+  geom_rect(color = NA) +  # Set the outline color to transparent
+  coord_polar(theta="y") + 
+  xlim(c(2, 4)) +
+  scale_fill_manual(values = c("#404040",  "#808080", porange)) +
+  theme_void() +
+  theme(plot.background = element_rect(fill = v_black),
+        panel.background = element_rect(fill = v_black),
+        legend.position = "none")
+
+# zone
+# 
+# ggsave(
+#   filename = here::here("final_images", "form_zone.png"),
+#   plot = zone, 
+#   device = "png",
+#   width =5, 
+#   height =5,
+#   unit = "in"
+# )
+
+```
+
