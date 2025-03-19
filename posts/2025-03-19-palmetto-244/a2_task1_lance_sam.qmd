@@ -1,0 +1,299 @@
+---
+title: "Predicting Palmetto Species Using Binomial Linear Regression"
+description: "Using canopy height, widest canopy length, widest canopy width, and the number of green leaves to predict palmetto species"
+author:
+  - name: Sam Lance
+    affiliation: Master of Environmental Science and Management at the The Bren School (UCSB), Advanced Data Analysis (ESM 244)
+date: 14 February, 2025
+categories: [Data Analysis, R] # self-defined categories
+image: palmetto.jpg
+format:
+  html:
+    code-fold: true
+    toc: false
+    number-sections: true
+    embed-resources: true
+    theme: Lux
+editor: visual
+execute:
+  echo: true
+  message: false
+  warning: false
+draft: false 
+---
+
+```{r}
+#| echo: true
+#| message: false
+
+library(ggplot2)
+library(tidyverse)
+library(here)
+library(janitor)
+library(cowplot)
+library(patchwork)
+library(lubridate)
+library(forcats)
+library(stringr)
+library(viridis)
+library(tidymodels)
+library(broom)
+library(kableExtra)
+```
+
+<img src="palmetto.jpg" width="700px"/>
+
+## Overview
+
+[**Data Description**]{.underline}:
+
+The Palmetto Dataset describes two species of palmetto Serenoa repens and Sabal etonia at the Archbold Biological Station in south-central Florida between 1981-1997 and again in 2001-2017 at five year intervals. The dataset measures many plant features, but this analysis will focus on canopy height, widest canopy length, widest canopy width, and the number of green leaves.
+
+[**Data Source**]{.underline}:
+
+Abrahamson, W.G. 2019. Survival, growth and biomass estimates of two dominant palmetto species of south-central Florida from 1981 - 2017, ongoing at 5-year intervals ver 1. Environmental Data Initiative.
+
+[**Central Questions**]{.underline}:
+
+What variables help us to accurately predict whether a palmetto plant is of the species Serenoa repens or Sabal etonia?
+
+[**Psuedocode**]{.underline}:
+
+-   Acquire + Clean Data
+
+-   Perform Exploratory Data Analysis
+
+    -   Create graphs to understand how length, width, height, and \# green leaves compare between species of palmetto
+
+-   Build + Select Models
+
+    -   Select model variables - length, width, height, \# of green leaves
+
+    -   Train the model - train the model to understand the data
+
+    -   Model selection - c fold validation to pick which model is best
+
+-   Finalize Model
+
+    -   Train the model on all of the data - allow model to see all of the data
+    -   Test performance - test accuracy, find amount predicted correctly
+
+-   Interpret the Results/ Visualize
+
+## Loading Data
+
+```{r}
+palmetto_og <- read.csv(here("posts","2025-03-19-palmetto-244", "data", "palmetto.csv")) |>
+  mutate(species = as.factor(species)) 
+
+palmetto_clean <- palmetto_og |>
+  mutate(species = ifelse(species %in% c(1, 2), 
+                          ifelse(species == 1, "S. repens", "S. etonia"), col1)) |>
+    select(species, height, width, length, green_lvs)
+```
+
+## Visualizations
+
+### Individual Plots:
+
+```{r}
+#| echo: true
+#| message: false
+height_plot <- palmetto_clean |>
+  ggplot(aes(x=species, y=height, fill=species)) +
+  geom_boxplot() +
+  scale_fill_viridis(discrete = TRUE, alpha=0.6, option = "G") +
+  theme_classic() +
+  theme(legend.position="none",
+        plot.title = element_text(size=11),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+        axis.title.y = element_text(size = 10)) +
+  labs(x = NULL, y = "Height (cm)", title = NULL)
+```
+
+```{r}
+#| echo: true
+#| message: false
+length_plot <- palmetto_clean %>%
+  ggplot(aes(x=species, y=length, fill=species)) +
+  geom_boxplot() +
+  scale_fill_viridis(discrete = TRUE, alpha=0.6, option = "G") +
+  theme_classic() +
+  theme(legend.position="none",
+        plot.title = element_text(size=11),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+        axis.title.y = element_text(size = 10)) +
+  labs(x = NULL, y = "Length (cm)", title = NULL)
+```
+
+```{r}
+#| echo: true
+#| message: false
+width_plot <- palmetto_clean %>%
+  ggplot(aes(x=species, y=width, fill=species)) +
+  geom_boxplot() +
+  scale_fill_viridis(discrete = TRUE, alpha=0.6, option = "G") +
+  theme_classic() +
+  theme(legend.position="none",
+        plot.title = element_text(size=11),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+        axis.title.y = element_text(size = 10)) +
+  labs(x = NULL, y = "Width (cm)", title = NULL)
+```
+
+```{r}
+#| echo: true
+#| message: false
+leaves_plot <- palmetto_clean %>%
+  ggplot(aes(x=species, y=green_lvs, fill=species)) +
+  geom_boxplot() +
+  scale_fill_viridis(discrete = TRUE, alpha=0.6, option = "G") +
+  theme_classic() +
+  theme(legend.position="none",
+        plot.title = element_text(size=11),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+        axis.title.y = element_text(size = 10)) +
+  labs(x = NULL, y = "Green Leaves (#)", title = NULL)
+```
+
+### Cowplots:
+
+Based on the exploratory data analysis conducted, while height and width do not vary much between species, the length and amount of green leaves are visually different.
+
+```{r}
+#| fig-cap: "**Figure 1. Comparing Characteristic Measurements of Two Palmetto Species (Serenoa repens and Sabal etonia)**. Plots A and B suggest little difference between height and width between the two species, while plots C and D suggest possible differences between length and the number of green leaves"
+
+
+data_vis <- plot_grid(height_plot, width_plot, length_plot, leaves_plot, 
+                      labels = c('A', 'B', 'C', 'D'), label_size = 12)
+data_vis
+```
+
+## Basic Binary Logistic Regression
+
+The results of this regression indicate that for model 1 that includes variables height, length, width, and the number of green leaves all possible variables are significant. Model 2, which includes the same variables except length, indicates that only width and green leaves are significant.
+
+Comparing the AIC values of each model, model 1 has a smaller AIC value, indicating it better describes the data presented.
+
+```{r}
+f1 <- species ~ height + length + width + green_lvs
+f2 <- species ~ height + width + green_lvs
+
+blr_1 <- glm(formula = f1, 
+             family = "binomial", 
+             data = palmetto_og)
+
+blr_2 <- glm(formula = f2, 
+             family = "binomial", 
+             data = palmetto_og)
+```
+
+## Selecting a Model
+
+### Creating + Running Model 1
+
+[**Parameters Included**]{.underline}: Plant height, canopy length, canopy width, and green leaves
+
+[**Results**]{.underline}: This model is 91% accurate, with a ROC value of 97%
+
+```{r}
+set.seed(2980)
+
+#splits dataset into 10 folds and repeats 10 times 
+folds_1 <- vfold_cv(palmetto_og, v = 10, repeats = 10)
+
+#creates a regression model 
+blr_mdl_1 <- logistic_reg() |>
+  set_engine('glm')
+
+#adds model and formula to the workflow 
+blr_wf_1 <- workflow() |>   ### initialize workflow
+  add_model(blr_mdl_1) |>
+  add_formula(formula = f1)
+
+#adds the folds to the workflow and stores the results 
+blr_fit_folds_1 <- blr_wf_1 |>
+  fit_resamples(folds_1)
+
+#collect_metrics(blr_fit_folds_1)
+```
+
+### Creating + Running Model 2
+
+[**Parameters Included:**]{.underline} Plant height, canopy width, and green leaves
+
+[**Results**]{.underline}: The model is 89% accurate, with a ROC value of 96%
+
+```{r}
+set.seed(2980)
+
+folds_2 <- vfold_cv(palmetto_og, v = 10, repeats = 10)
+
+
+blr_mdl_2 <- logistic_reg() |>
+  set_engine('glm') ### this is the default - we could try engines from other packages or functions
+
+
+blr_wf_2 <- workflow() |>   ### initialize workflow
+  add_model(blr_mdl_1) |>
+  add_formula(formula = f2)
+
+
+blr_fit_folds_2 <- blr_wf_2 |>
+  fit_resamples(folds_2)
+
+#collect_metrics(blr_fit_folds_2)
+```
+
+### Model Selection
+
+Model 1, which included plant height, canopy length, canopy width, and the amount of green leaves, was chosen for the remainder of this analysis due to its higher accuracy and greater ROC value, both of which indicate better model performance.
+
+## Model Training + Results
+
+### Training Model on All Data
+
+```{r}
+#training on the entire dataset 
+blr_1_fit <- blr_mdl_1 %>%
+  fit(formula = f1, data = palmetto_og)
+
+#create a column of what the model predicts what species 
+palmetto_predict <- palmetto_og %>%
+  mutate(predict(blr_1_fit, new_data = .))
+```
+
+### Model Results
+
+```{r}
+#clean up the output of this function 
+tidy_palmetto <- tidy(blr_1_fit)
+
+kable(tidy_palmetto, caption = "Performance Metrics of Model 1") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = F)
+```
+
+## Success of Model
+
+[**Model Success**]{.underline}: Our model was able to predict the species given palmetto plant by its characteristics (height, length, width, and number of green leaves) between 90% and 92% of the time. This indicates the model has a high predictive accuracy.
+
+```{r}
+accuracy_by_species <- palmetto_predict |>
+  select(species, .pred_class) |> #pick two columns to allow drop_na to work 
+  drop_na() |> #drop na to allow the code to work
+  mutate(correct = ifelse(species == .pred_class, 1, 0)) |> 
+  group_by(species) |>  #group by actual species
+  summarise(
+    total_cases = n(),  #count total cases per species
+    correct_predictions = sum(correct),  #count the number of correct species predictions 
+    incorrect_predictions = total_cases - correct_predictions, #count number of incorrect predictions 
+    accuracy = (correct_predictions / total_cases) * 100) #find the accuracy 
+
+kable(accuracy_by_species, caption = "Model 1 Accuracy at Predicting Palmetto Species") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = F)
+
+```

@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "Portfolio",
     "section": "",
-    "text": "Composite Volcanoes and the Ring of Fire\n\n\n\nData Visualization\n\n\nR\n\n\nGraphic Design\n\n\n\nCreating an infographic on the distribution of composite volcanoes around the world, the rock types that make up these volcanoes, and the geologic environments they form in.\n\n\n\nSam Lance\n\n\nMar 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSt. Louis, Missouri Watershed Management Plan\n\n\n\nWriting Sample\n\n\nR\n\n\nGIS\n\n\n\nWatershed Management Plan for the city of St. Louis Missouri\n\n\n\nSam Lance, Natalie Mayer, Liv Hemond\n\n\nDec 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHabitat Suitability for African Lion Populations Under Climate Change\n\n\n\nWriting Sample\n\n\nGIS\n\n\n\nUnderstanding how African Lion habitats will change under different climate change predictions\n\n\n\nSam Lance, Liv Hemond, Ashley Larsen\n\n\nDec 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Cost Path for Jaguar Movement\n\n\n\nWriting Sample\n\n\nGIS\n\n\n\nFinding the least cost path for jaguar movement in Southern Costa Rica for barrier removal\n\n\n\nSam Lance, Priscilla Ta, Ashley Larsen\n\n\nDec 1, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Composite Volcanoes and the Ring of Fire\n\n\n\nData Visualization\n\n\nR\n\n\nGraphic Design\n\n\n\nCreating an infographic on the distribution of composite volcanoes around the world, the rock types that make up these volcanoes, and the geologic environments they form in.\n\n\n\nSam Lance\n\n\nMar 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPerforming a PCA with Google Earth Engine Climate Data\n\n\n\nData Analysis\n\n\nR\n\n\n\nAnalyzing the relationships between different climate variables (annual rainfall + temperature, wind, cloudiness, rain+ temperature seasonality, isothermality)\n\n\n\nSam Lance\n\n\nMar 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredicting Palmetto Species Using Binomial Linear Regression\n\n\n\nData Analysis\n\n\nR\n\n\n\nUsing canopy height, widest canopy length, widest canopy width, and the number of green leaves to predict palmetto species\n\n\n\nSam Lance\n\n\nFeb 14, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSt. Louis, Missouri Watershed Management Plan\n\n\n\nWriting Sample\n\n\nR\n\n\nGIS\n\n\n\nWatershed Management Plan for the city of St. Louis Missouri\n\n\n\nSam Lance, Natalie Mayer, Liv Hemond\n\n\nDec 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHabitat Suitability for African Lion Populations Under Climate Change\n\n\n\nWriting Sample\n\n\nGIS\n\n\n\nUnderstanding how African Lion habitats will change under different climate change predictions\n\n\n\nSam Lance, Liv Hemond, Ashley Larsen\n\n\nDec 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Cost Path for Jaguar Movement\n\n\n\nWriting Sample\n\n\nGIS\n\n\n\nFinding the least cost path for jaguar movement in Southern Costa Rica for barrier removal\n\n\n\nSam Lance, Priscilla Ta, Ashley Larsen\n\n\nDec 1, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -166,5 +166,103 @@
     "title": "About",
     "section": "",
     "text": "Originally I came to Washington University in St. Louis as a Chinese and Art History double major, before discovering my interest in Earth Science. Studying Hydrology and Surface Processes, I was fascinated by rivers and how they could move sediments through landscapes. Looking for new experiences, I moved to New York City when I graduated and worked as a Staff Geologist, monitoring soil movement on construction sites to comply with the Resource Conservation and Recovery Act (RCRA)\nCurrently I am a second-year student at the Bren School getting my Masters in Environmental Science and Management. Since coming to Bren, I have re-discovered my interest in rivers, and am currently working in the Surface Processes Lab here at UCSB studying river migration and movement worldwide. This results of this research could affect flood policy in regions that experience avulsion events, informing when flood prevention measures could be put into place.\nOutside of Bren, I love being outside, mainly walking along the beach with friends or going for a run around campus. I also enjoy knitting and crocheting, and host a craft night every week in my apartment."
+  },
+  {
+    "objectID": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html",
+    "href": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html",
+    "title": "Performing a PCA with Google Earth Engine Climate Data",
+    "section": "",
+    "text": "Code\nlibrary(ggplot2)\nlibrary(tidyverse)\nlibrary(here)\nlibrary(janitor)\nlibrary(cowplot)\nlibrary(patchwork)\nlibrary(lubridate)\nlibrary(forcats)\nlibrary(stringr)\nlibrary(viridis)\nlibrary(tidymodels)\nlibrary(broom)\nlibrary(kableExtra)\nlibrary(ggfortify)"
+  },
+  {
+    "objectID": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html#overview",
+    "href": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html#overview",
+    "title": "Performing a PCA with Google Earth Engine Climate Data",
+    "section": "1 Overview",
+    "text": "1 Overview\nData Description:\nThis data is all acquired through Google Earth Engine (https://earthengine.google.com/) where publicly available remote sensing datasets have been uploaded. Most of the data is derived by calculating the mean for each country at a reduction scale of about 10km.\nData Source:\nVenter, Zander. (2018). Environmental variables for world countries. Retrieved 2025-02-02 from https://www.kaggle.com/datasets/zanderventer/environmental-variables-for-world-countries.\nCentral Question:\nWhat are the relationships between different climate variables (annual rainfall + temperature, wind, cloudiness, rain+ temperature seasonality, isothermality)?\nPsuedocode:\n\nWrangle + Clean Data\n\nExplore data - create visualizations\nSelect variables to use in analysis\n\nPerform PCA on All Data\n\nSee what percentage of data is explained by the runs\nSee how each variable corresponds to each other\n\nVisualize PCA Results\n\nCreate biplot\nCreate screeplot"
+  },
+  {
+    "objectID": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html#loading-data",
+    "href": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html#loading-data",
+    "title": "Performing a PCA with Google Earth Engine Climate Data",
+    "section": "2 Loading Data",
+    "text": "2 Loading Data\n\n\nCode\nclim_og &lt;- read.csv(here(\"posts\",\"2025-03-19-pca-244\", \"data\", \"world_env_vars.csv\"))\n\nclim_mod &lt;- clim_og|&gt;\n  drop_na() |&gt;\n  mutate(rain_seasonality = rain_seasonailty) |&gt; #fix spelling error\n  select(\"rain_mean_annual\", \"temp_mean_annual\", \"wind\", \"cloudiness\", \"rain_seasonality\", \"temp_seasonality\", \"isothermality\") #select a few variables to look at for this analysis"
+  },
+  {
+    "objectID": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html#perform-the-pca",
+    "href": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html#perform-the-pca",
+    "title": "Performing a PCA with Google Earth Engine Climate Data",
+    "section": "3 Perform the PCA",
+    "text": "3 Perform the PCA\n\n\nCode\n#perform pca\nclim_pca &lt;- clim_mod |&gt;\n  select(where(is.numeric)) |&gt; \n  prcomp(scale = TRUE)\n\n#generate summary table of results \n#summary(clim_pca)\n\n#perform rotation\nrot&lt;- clim_pca$rotation\n\n#create summary to see how variables relate to the runs \n#sum &lt;- summary(clim_pca)"
+  },
+  {
+    "objectID": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html#create-interpret-biplot",
+    "href": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html#create-interpret-biplot",
+    "title": "Performing a PCA with Google Earth Engine Climate Data",
+    "section": "4 Create + Interpret Biplot",
+    "text": "4 Create + Interpret Biplot\n\n4.1 Creating Plot\n\n\nCode\nautoplot(clim_pca,\n        data = clim_mod,\n        loadings = TRUE,\n        loadings.label = TRUE,\n        loadings.colour = \"black\",\n        loadings.label.colour = \"black\",\n        loadings.label.vjust = -0.5\n        ) +\n  theme_minimal() \n\n\n\n\n\nFigure 1. Biplot of Principal Component Analysis. This biplot shows the relationship between the different climate variables. The length of the line represents the variance in the PC direction, and the angle represents the correlation between the variables.\n\n\n\n\n\n\n4.2 Interpretation\n\nCorrelations:\n\nTemperature seasonality and wind are highly correlated, meaning areas with highly seasonal climates have higher average wind speeds\nTemperature seasonality is negatively correlated with isothermality, meaning areas with highly seasonal climates have less variation between day and night temperatures compared to the temperatures throughout the year\nCloudiness and rain seasonality are not correlated to isothermality, meaning increases in cloudiness or rain seasonality have no impact on isothermality"
+  },
+  {
+    "objectID": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html#create-interpret-screeplot",
+    "href": "posts/2025-03-19-pca-244/a2_task2_lance_sam.html#create-interpret-screeplot",
+    "title": "Performing a PCA with Google Earth Engine Climate Data",
+    "section": "5 Create + Interpret Screeplot",
+    "text": "5 Create + Interpret Screeplot\n\n5.1 Create Screeplot\n\n\nCode\npcs &lt;- clim_pca$sdev^2  #square standard deviations \nvariances &lt;- (pcs / sum(pcs)) *100  #proportion of variance explaine dby each variance \npc_numbers &lt;- 1:length(variances)  #create vector of principal components\n\n#create a plot df with the numbers pc and the variances above \nscree_data &lt;- data.frame(pc = pc_numbers, var = variances)\n\n#create screeplot \nggplot(scree_data, aes(x = pc, y = var)) +\n  geom_bar(stat = \"identity\", fill = \"darkgrey\", color = \"black\", width = 0.6) +\n  labs(x = \"Principal Component (#)\", y = \"Variance Explained (%)\") +\n  scale_x_continuous(breaks = seq(from = 1, to = 7, by = 1)) +\n  theme_minimal() +\n  theme(\n    axis.title = element_text(size = 12),\n  )\n\n\n\n\n\nFigure 2. Screeplot of Principal Component Analysis. This screeplot shows the amount of variance captured by each component of the Principal Component Analysis. Over 75% of the data is captured in the first two components, with an additional 12% captured by the third component.\n\n\n\n\n\n\n5.2 Interpretation\n\nThe majority of the variance within the data is explained with the first two components (75%)\nAdding the third principal component would explain an additional 12% of the data"
+  },
+  {
+    "objectID": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html",
+    "href": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html",
+    "title": "Predicting Palmetto Species with Binomial Linear Regression",
+    "section": "",
+    "text": "Code\nlibrary(ggplot2)\nlibrary(tidyverse)\nlibrary(here)\nlibrary(janitor)\nlibrary(cowplot)\nlibrary(patchwork)\nlibrary(lubridate)\nlibrary(forcats)\nlibrary(stringr)\nlibrary(viridis)\nlibrary(tidymodels)\nlibrary(broom)\nlibrary(kableExtra)"
+  },
+  {
+    "objectID": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#overview",
+    "href": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#overview",
+    "title": "Predicting Palmetto Species with Binomial Linear Regression",
+    "section": "1 Overview",
+    "text": "1 Overview\nData Description:\nThe Palmetto Dataset describes two species of palmetto Serenoa repens and Sabal etonia at the Archbold Biological Station in south-central Florida between 1981-1997 and again in 2001-2017 at five year intervals. The dataset measures many plant features, but this analysis will focus on canopy height, widest canopy length, widest canopy width, and the number of green leaves.\nData Source:\nAbrahamson, W.G. 2019. Survival, growth and biomass estimates of two dominant palmetto species of south-central Florida from 1981 - 2017, ongoing at 5-year intervals ver 1. Environmental Data Initiative.\nCentral Questions:\nWhat variables help us to accurately predict whether a palmetto plant is of the species Serenoa repens or Sabal etonia?\nPsuedocode:\n\nAcquire + Clean Data\nPerform Exploratory Data Analysis\n\nCreate graphs to understand how length, width, height, and # green leaves compare between species of palmetto\n\nBuild + Select Models\n\nSelect model variables - length, width, height, # of green leaves\nTrain the model - train the model to understand the data\nModel selection - c fold validation to pick which model is best\n\nFinalize Model\n\nTrain the model on all of the data - allow model to see all of the data\nTest performance - test accuracy, find amount predicted correctly\n\nInterpret the Results/ Visualize"
+  },
+  {
+    "objectID": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#loading-data",
+    "href": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#loading-data",
+    "title": "Predicting Palmetto Species with Binomial Linear Regression",
+    "section": "2 Loading Data",
+    "text": "2 Loading Data\n\n\nCode\npalmetto_og &lt;- read.csv(here(\"posts\",\"2025-03-19-palmetto-244\", \"data\", \"palmetto.csv\")) |&gt;\n  mutate(species = as.factor(species)) \n\npalmetto_clean &lt;- palmetto_og |&gt;\n  mutate(species = ifelse(species %in% c(1, 2), \n                          ifelse(species == 1, \"S. repens\", \"S. etonia\"), col1)) |&gt;\n    select(species, height, width, length, green_lvs)"
+  },
+  {
+    "objectID": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#visualizations",
+    "href": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#visualizations",
+    "title": "Predicting Palmetto Species with Binomial Linear Regression",
+    "section": "3 Visualizations",
+    "text": "3 Visualizations\n\n3.1 Individual Plots:\n\n\nCode\nheight_plot &lt;- palmetto_clean |&gt;\n  ggplot(aes(x=species, y=height, fill=species)) +\n  geom_boxplot() +\n  scale_fill_viridis(discrete = TRUE, alpha=0.6, option = \"G\") +\n  theme_classic() +\n  theme(legend.position=\"none\",\n        plot.title = element_text(size=11),\n        axis.text.x = element_text(size = 10),\n        axis.text.y = element_text(size = 10),\n        axis.title.y = element_text(size = 10)) +\n  labs(x = NULL, y = \"Height (cm)\", title = NULL)\n\n\n\n\nCode\nlength_plot &lt;- palmetto_clean %&gt;%\n  ggplot(aes(x=species, y=length, fill=species)) +\n  geom_boxplot() +\n  scale_fill_viridis(discrete = TRUE, alpha=0.6, option = \"G\") +\n  theme_classic() +\n  theme(legend.position=\"none\",\n        plot.title = element_text(size=11),\n        axis.text.x = element_text(size = 10),\n        axis.text.y = element_text(size = 10),\n        axis.title.y = element_text(size = 10)) +\n  labs(x = NULL, y = \"Length (cm)\", title = NULL)\n\n\n\n\nCode\nwidth_plot &lt;- palmetto_clean %&gt;%\n  ggplot(aes(x=species, y=width, fill=species)) +\n  geom_boxplot() +\n  scale_fill_viridis(discrete = TRUE, alpha=0.6, option = \"G\") +\n  theme_classic() +\n  theme(legend.position=\"none\",\n        plot.title = element_text(size=11),\n        axis.text.x = element_text(size = 10),\n        axis.text.y = element_text(size = 10),\n        axis.title.y = element_text(size = 10)) +\n  labs(x = NULL, y = \"Width (cm)\", title = NULL)\n\n\n\n\nCode\nleaves_plot &lt;- palmetto_clean %&gt;%\n  ggplot(aes(x=species, y=green_lvs, fill=species)) +\n  geom_boxplot() +\n  scale_fill_viridis(discrete = TRUE, alpha=0.6, option = \"G\") +\n  theme_classic() +\n  theme(legend.position=\"none\",\n        plot.title = element_text(size=11),\n        axis.text.x = element_text(size = 10),\n        axis.text.y = element_text(size = 10),\n        axis.title.y = element_text(size = 10)) +\n  labs(x = NULL, y = \"Green Leaves (#)\", title = NULL)\n\n\n\n\n3.2 Cowplots:\nBased on the exploratory data analysis conducted, while height and width do not vary much between species, the length and amount of green leaves are visually different.\n\n\nCode\ndata_vis &lt;- plot_grid(height_plot, width_plot, length_plot, leaves_plot, \n                      labels = c('A', 'B', 'C', 'D'), label_size = 12)\ndata_vis\n\n\n\n\n\nFigure 1. Comparing Characteristic Measurements of Two Palmetto Species (Serenoa repens and Sabal etonia). Plots A and B suggest little difference between height and width between the two species, while plots C and D suggest possible differences between length and the number of green leaves"
+  },
+  {
+    "objectID": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#basic-binary-logistic-regression",
+    "href": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#basic-binary-logistic-regression",
+    "title": "Predicting Palmetto Species with Binomial Linear Regression",
+    "section": "4 Basic Binary Logistic Regression",
+    "text": "4 Basic Binary Logistic Regression\nThe results of this regression indicate that for model 1 that includes variables height, length, width, and the number of green leaves all possible variables are significant. Model 2, which includes the same variables except length, indicates that only width and green leaves are significant.\nComparing the AIC values of each model, model 1 has a smaller AIC value, indicating it better describes the data presented.\n\n\nCode\nf1 &lt;- species ~ height + length + width + green_lvs\nf2 &lt;- species ~ height + width + green_lvs\n\nblr_1 &lt;- glm(formula = f1, \n             family = \"binomial\", \n             data = palmetto_og)\n\nblr_2 &lt;- glm(formula = f2, \n             family = \"binomial\", \n             data = palmetto_og)"
+  },
+  {
+    "objectID": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#selecting-a-model",
+    "href": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#selecting-a-model",
+    "title": "Predicting Palmetto Species with Binomial Linear Regression",
+    "section": "5 Selecting a Model",
+    "text": "5 Selecting a Model\n\n5.1 Creating + Running Model 1\nParameters Included: Plant height, canopy length, canopy width, and green leaves\nResults: This model is 91% accurate, with a ROC value of 97%\n\n\nCode\nset.seed(2980)\n\n#splits dataset into 10 folds and repeats 10 times \nfolds_1 &lt;- vfold_cv(palmetto_og, v = 10, repeats = 10)\n\n#creates a regression model \nblr_mdl_1 &lt;- logistic_reg() |&gt;\n  set_engine('glm')\n\n#adds model and formula to the workflow \nblr_wf_1 &lt;- workflow() |&gt;   ### initialize workflow\n  add_model(blr_mdl_1) |&gt;\n  add_formula(formula = f1)\n\n#adds the folds to the workflow and stores the results \nblr_fit_folds_1 &lt;- blr_wf_1 |&gt;\n  fit_resamples(folds_1)\n\n#collect_metrics(blr_fit_folds_1)\n\n\n\n\n5.2 Creating + Running Model 2\nParameters Included: Plant height, canopy width, and green leaves\nResults: The model is 89% accurate, with a ROC value of 96%\n\n\nCode\nset.seed(2980)\n\nfolds_2 &lt;- vfold_cv(palmetto_og, v = 10, repeats = 10)\n\n\nblr_mdl_2 &lt;- logistic_reg() |&gt;\n  set_engine('glm') ### this is the default - we could try engines from other packages or functions\n\n\nblr_wf_2 &lt;- workflow() |&gt;   ### initialize workflow\n  add_model(blr_mdl_1) |&gt;\n  add_formula(formula = f2)\n\n\nblr_fit_folds_2 &lt;- blr_wf_2 |&gt;\n  fit_resamples(folds_2)\n\n#collect_metrics(blr_fit_folds_2)\n\n\n\n\n5.3 Model Selection\nModel 1, which included plant height, canopy length, canopy width, and the amount of green leaves, was chosen for the remainder of this analysis due to its higher accuracy and greater ROC value, both of which indicate better model performance."
+  },
+  {
+    "objectID": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#model-training-results",
+    "href": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#model-training-results",
+    "title": "Predicting Palmetto Species with Binomial Linear Regression",
+    "section": "6 Model Training + Results",
+    "text": "6 Model Training + Results\n\n6.1 Training Model on All Data\n\n\nCode\n#training on the entire dataset \nblr_1_fit &lt;- blr_mdl_1 %&gt;%\n  fit(formula = f1, data = palmetto_og)\n\n#create a column of what the model predicts what species \npalmetto_predict &lt;- palmetto_og %&gt;%\n  mutate(predict(blr_1_fit, new_data = .))\n\n\n\n\n6.2 Model Results\n\n\nCode\n#clean up the output of this function \ntidy_palmetto &lt;- tidy(blr_1_fit)\n\nkable(tidy_palmetto, caption = \"Performance Metrics of Model 1\") %&gt;%\n  kable_styling(bootstrap_options = c(\"striped\", \"hover\", \"condensed\"), full_width = F)\n\n\n\nPerformance Metrics of Model 1\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n3.2266851\n0.1420708\n22.71180\n0\n\n\nheight\n-0.0292173\n0.0023061\n-12.66984\n0\n\n\nlength\n0.0458233\n0.0018661\n24.55600\n0\n\n\nwidth\n0.0394434\n0.0021000\n18.78227\n0\n\n\ngreen_lvs\n-1.9084747\n0.0388634\n-49.10728\n0"
+  },
+  {
+    "objectID": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#success-of-model",
+    "href": "posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html#success-of-model",
+    "title": "Predicting Palmetto Species with Binomial Linear Regression",
+    "section": "7 Success of Model",
+    "text": "7 Success of Model\nModel Success: Our model was able to predict the species given palmetto plant by its characteristics (height, length, width, and number of green leaves) between 90% and 92% of the time. This indicates the model has a high predictive accuracy.\n\n\nCode\naccuracy_by_species &lt;- palmetto_predict |&gt;\n  select(species, .pred_class) |&gt; #pick two columns to allow drop_na to work \n  drop_na() |&gt; #drop na to allow the code to work\n  mutate(correct = ifelse(species == .pred_class, 1, 0)) |&gt; \n  group_by(species) |&gt;  #group by actual species\n  summarise(\n    total_cases = n(),  #count total cases per species\n    correct_predictions = sum(correct),  #count the number of correct species predictions \n    incorrect_predictions = total_cases - correct_predictions, #count number of incorrect predictions \n    accuracy = (correct_predictions / total_cases) * 100) #find the accuracy \n\nkable(accuracy_by_species, caption = \"Model 1 Accuracy at Predicting Palmetto Species\") %&gt;%\n  kable_styling(bootstrap_options = c(\"striped\", \"hover\", \"condensed\"), full_width = F)\n\n\n\nModel 1 Accuracy at Predicting Palmetto Species\n\n\nspecies\ntotal_cases\ncorrect_predictions\nincorrect_predictions\naccuracy\n\n\n\n\n1\n6112\n5548\n564\n90.77225\n\n\n2\n6155\n5701\n454\n92.62388"
   }
 ]

@@ -1,0 +1,171 @@
+---
+title: "Performing a PCA with Google Earth Engine Climate Data"
+description: "Analyzing the relationships between different climate variables (annual rainfall + temperature, wind, cloudiness, rain+ temperature seasonality, isothermality)"
+author:
+  - name: Sam Lance
+    affiliation: Master of Environmental Science and Management at the The Bren School (UCSB), Advanced Data Analysis (ESM 244)
+date: 9 March, 2025
+categories: [Data Analysis, R] # self-defined categories
+image: rain.jpg
+format:
+  html:
+    code-fold: true
+    toc: false
+    number-sections: true
+    embed-resources: true
+    theme: Lux
+editor: visual
+execute:
+  echo: true
+  message: false
+  warning: false
+draft: false 
+---
+
+```{r}
+#| echo: true
+#| message: false
+
+library(ggplot2)
+library(tidyverse)
+library(here)
+library(janitor)
+library(cowplot)
+library(patchwork)
+library(lubridate)
+library(forcats)
+library(stringr)
+library(viridis)
+library(tidymodels)
+library(broom)
+library(kableExtra)
+library(ggfortify)
+```
+
+<img src="rain.jpg" width="700px"/>
+
+## Overview
+
+[**Data Description**]{.underline}:
+
+This data is all acquired through Google Earth Engine (<https://earthengine.google.com/>) where publicly available remote sensing datasets have been uploaded. Most of the data is derived by calculating the mean for each country at a reduction scale of about 10km.
+
+[**Data Source**]{.underline}:
+
+Venter, Zander. (2018). Environmental variables for world countries. Retrieved 2025-02-02 from <https://www.kaggle.com/datasets/zanderventer/environmental-variables-for-world-countries>.
+
+[**Central Question**]{.underline}:
+
+What are the relationships between different climate variables (annual rainfall + temperature, wind, cloudiness, rain+ temperature seasonality, isothermality)?
+
+[**Psuedocode**]{.underline}:
+
+-   Wrangle + Clean Data
+
+    -   Explore data - create visualizations
+
+    -   Select variables to use in analysis
+
+-   Perform PCA on All Data
+
+    -   See what percentage of data is explained by the runs
+
+    -   See how each variable corresponds to each other
+
+-   Visualize PCA Results
+
+    -   Create biplot
+
+    -   Create screeplot
+
+## Loading Data
+
+```{r}
+clim_og <- read.csv(here("posts","2025-03-19-pca-244", "data", "world_env_vars.csv"))
+
+clim_mod <- clim_og|>
+  drop_na() |>
+  mutate(rain_seasonality = rain_seasonailty) |> #fix spelling error
+  select("rain_mean_annual", "temp_mean_annual", "wind", "cloudiness", "rain_seasonality", "temp_seasonality", "isothermality") #select a few variables to look at for this analysis 
+```
+
+## Perform the PCA
+
+```{r}
+#| echo: true
+#| message: false
+
+
+#perform pca
+clim_pca <- clim_mod |>
+  select(where(is.numeric)) |> 
+  prcomp(scale = TRUE)
+
+#generate summary table of results 
+#summary(clim_pca)
+
+#perform rotation
+rot<- clim_pca$rotation
+
+#create summary to see how variables relate to the runs 
+#sum <- summary(clim_pca)
+```
+
+## Create + Interpret Biplot
+
+### Creating Plot
+
+```{r}
+#| fig-cap: "**Figure 1. Biplot of Principal Component Analysis**. This biplot shows the relationship between the different climate variables. The length of the line represents the variance in the PC direction, and the angle represents the correlation between the variables."
+
+autoplot(clim_pca,
+     	data = clim_mod,
+     	loadings = TRUE,
+     	loadings.label = TRUE,
+     	loadings.colour = "black",
+     	loadings.label.colour = "black",
+     	loadings.label.vjust = -0.5
+     	) +
+  theme_minimal() 
+```
+
+### Interpretation
+
+-   [Correlations:]{.underline}
+    -   Temperature seasonality and wind are highly correlated, meaning areas with highly seasonal climates have higher average wind speeds
+    -   Temperature seasonality is negatively correlated with isothermality, meaning areas with highly seasonal climates have less variation between day and night temperatures compared to the temperatures throughout the year
+    -   Cloudiness and rain seasonality are not correlated to isothermality, meaning increases in cloudiness or rain seasonality have no impact on isothermality
+
+## Create + Interpret Screeplot
+
+### Create Screeplot
+
+```{r}
+#| fig-cap: "**Figure 2. Screeplot of Principal Component Analysis**. This screeplot shows the amount of variance captured by each component of the Principal Component Analysis. Over 75% of the data is captured in the first two components, with an additional 12% captured by the third component."
+
+
+pcs <- clim_pca$sdev^2  #square standard deviations 
+variances <- (pcs / sum(pcs)) *100  #proportion of variance explaine dby each variance 
+pc_numbers <- 1:length(variances)  #create vector of principal components
+
+#create a plot df with the numbers pc and the variances above 
+scree_data <- data.frame(pc = pc_numbers, var = variances)
+
+#create screeplot 
+ggplot(scree_data, aes(x = pc, y = var)) +
+  geom_bar(stat = "identity", fill = "darkgrey", color = "black", width = 0.6) +
+  labs(x = "Principal Component (#)", y = "Variance Explained (%)") +
+  scale_x_continuous(breaks = seq(from = 1, to = 7, by = 1)) +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 12),
+  )
+
+
+```
+
+### Interpretation
+
+-   The majority of the variance within the data is explained with the first two components (75%)
+
+-   Adding the third principal component would explain an additional 12% of the data
