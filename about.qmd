@@ -8,4 +8,45 @@ Currently I am a second-year student at the Bren School getting my Masters in En
 
 Outside of Bren, I love being outside, mainly walking along the beach with friends or going for a run around campus. I also enjoy knitting and crocheting, and host a craft night every week in my apartment.
 
-![](images/sam_outside-01.jpg){fig-align="center" width="404"}
+::: panel-tabset
+## Professional Experience
+
+**Research Assistant**, Surface Processes Lab at UCSB (June 2024- Present)
+
+**Data Manager**, Group Project at the Bren School at UCSB (March 2024-June 2025)
+
+**Environmental Planning Intern**, Morro Bay Estuary Program (June 2024-September 2024)
+
+## Education
+
+**MESM in Environmental Science and Management** , The Bren School at UCSB (September 2023-June 2025)
+
+**BA in Environmental Science and Management** , Washington University in St. Louis (August 2018-May 2022)
+
+## Highlighted Coursework
+
+**Technical Coursework**
+Advanced Data Analysis (R) \| Geographic Information Systems (GIS) \| Data Visualization (R)
+
+**Water Coursework**
+Quantitative Geomorphology \| Groundwater Management \| Sustainable Water Resource Management
+
+## Photos
+
+::: {.cell layout-ncol=2}
+![On an Undergraduate Geology Field Trip in Death Valley](images/sam_outside.jpg){width=30%, fig-align="center"}
+
+![Presenting for my GIS Course](images/nat_sam.jpg){width=30%, fig-align="center"}
+
+![Construction Site from Consulting in the South Bronx after Graduation](images/construction_site.jpg){width=30%, fig-align="center"}
+
+![After My First Grad School Presentation](images/biz_project.jpg){width=30%, fig-align="center"}
+
+
+![My Group for My Bren Group Project (Thesis Equivlent)](images/gp.jpg){width=30%, fig-align="center"}
+
+
+![A Selection of Avulsion Sites from My Work in the Surface Processes Lab](images/clipboard-3533513032.png){width=30%, fig-align="center"}
+:::
+
+:::

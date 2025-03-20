@@ -1,0 +1,239 @@
+---
+title: "Text Analysis of Jurassic Park"
+description: "Word frequency and sentiment analysis of the text from the book Jurassic Park by Michael Crichton"
+author:
+  - name: Sam Lance
+    affiliation: Master of Environmental Science and Management at the The Bren School (UCSB), Advanced Data Analysis (ESM 244)
+date: 18 March, 2025
+categories: [Data Analysis, R] # self-defined categories
+image: dino_cover.jpg
+format:
+  html:
+    code-fold: true
+    toc: false
+    number-sections: true
+    embed-resources: true
+    theme: Lux
+editor: visual
+execute:
+  echo: true
+  message: false
+  warning: false
+draft: false 
+---
+
+<figure style="text-align: center;">
+
+<img src="sam_jp.jpg" alt="Author Photoshopped Sitting on Jurassic Park Logo of Dinosaur in Circle" width="600px"/>
+
+<figcaption>Sam Sitting on Jurassic Park Logo, Photoshop Courtesy of Sam Lance</figcaption>
+
+</figure>
+
+## Data Description and Citation
+
+The data used in this analysis is the text of the book "Jurassic Park" by Michael Crichton. The data was obtained from the website Readers Library (https://readerslibrary.org/wp-content/uploads/Jurassic-Park.pdf). The citation for the book is as follows:
+
+Crichton, Michael. Jurassic Park. New York: Alfred A. Knopf, 1990.
+
+## Analysis
+
+This analysis will focus on the text of the book Jurassic Park by Michael Crichton. The book begins by following the travels of a group of scientists to Isla Nublar, and over time shifts into an action novel/ mediation on the ethics of science. I noticed this stark change in tone when reading the book, which made me curious about whether this trend would appear through text and sentiment analysis.
+
+One quick note on the structure of this analysis is that while the book has traditional chapters, it is also broken up into six different fractal iterations. Each iteration shows a picture of a fractal, a repeating geometric pattern, and a description of how patterns begin to emerge as more of the pattern is seen. These special markers appear at pivotal moments of the book, and will be used in place of chapters to measure how sentiments change further through the book.
+
+<figure style="text-align: center;">
+
+<img src="fractal.jpg" alt="Fractal from Jurassic Park Chapter 1" height="350px"/>
+
+<figcaption>Example Fractal Image from the First Chapter of the Book, Courtesy of @TheRealDoctorT on X</figcaption>
+
+</figure>
+
+## Steps of Analysis
+
+The steps taken in this analysis are as follows:
+
+1.  Load Data
+2.  Wrangle Data
+    1.  Load in PDF
+    2.  Convert into Dataframe
+    3.  Convert Iterations into Chapters - iterations best way to divide not actual chapters
+    4.  Separate Out Each Word
+    5.  Remove Other Words - names, numbers, etc.
+3.  Create Column Chart
+4.  Create Word Cloud
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(here)
+library(janitor)
+library(tsibble)
+library(feasts)
+library(fable)
+library(tidytext)
+library(pdftools)
+library(ggwordcloud)
+library(textdata)
+```
+
+## Loading PDF Document
+
+```{r}
+jp_text <- pdftools::pdf_text(here("posts","2025-03-19-jp-244", "data", "jurassic_park.pdf"))
+```
+
+## Wrangling and Turning into Dataframe
+
+```{r}
+
+
+#######################################################
+#CONVERT INTO A DATAFRAME 
+#######################################################
+
+jp_lines <- data.frame(jp_text) |>
+  mutate(page= 1:n()) |> #create a column for each page 
+  mutate(text_full = str_split(jp_text, pattern= '\\n')) |> #new vector within each column, each /n keeps as its own unique element within the vector itself, need // is telling r to look for \n exactly as written
+  unnest(text_full) |> #extract each element of the vector as a row in the dataframe, unique observation for each line 
+  mutate(text_full = str_trim(text_full))  #remove any leading or trailing white space
+
+#######################################################
+#GET CHAPTER NAMES
+#######################################################
+
+jp_chapts <- jp_lines |> 
+  slice(-(1:443)) |> #gets rid of preface + junk, find line by looking at the actual data 
+  mutate(iteration = ifelse(str_detect(text_full, regex("Iteration", ignore_case = FALSE)), text_full, NA)) |> #find where says chapter, if it does, put the chapter number in the new column, if not, put NA
+  fill(iteration, .direction = 'down') |> #fill in the nas with chapter from above it 
+  separate(col = iteration, into = c("num", "it"), sep = " ")  |>#seperate out the word chapter and the number 
+  mutate(num_numeric = case_when(
+    num == "First" ~ 1,
+    num == "Second" ~ 2,
+    num == "Third" ~ 3,
+    num == "Fourth" ~ 4,
+    num == "Fifth" ~ 5,
+    num == "Sixth" ~ 6,
+    num == "Seventh" ~ 7,
+    TRUE ~ NA_real_  # Any other values that don't match will be assigned NA
+  )) |>
+  drop_na()
+
+#######################################################
+#SEPERATE OUT EACH WORD
+#######################################################
+jp_words <- jp_chapts |> 
+  unnest_tokens(word, text_full) |> #take info from text_full and put into column called word
+  select(-jp_text) #taking out the column of the actual hobbit text 
+
+#######################################################
+#GET RID OF STOP WORDS + NUMBERS + NAMES 
+#######################################################
+jp_wordcount <- jp_words |> 
+  count(num_numeric, word) #count the number of times each word appears in each iteration
+
+jp_words_clean <- jp_wordcount |> 
+  anti_join(stop_words, by = 'word') |>#take out all stop words by the column word 
+  filter(!str_detect(word, regex("[0-9]", ignore_case = FALSE))) |> #take out all numbers
+  filter(!(word %in% c("grant", "gennaro", "hammond", "tim", "lex", "wu", "muldoon", "malcolm", "arnold", "regis", "harding", "nedry", "ed", "dodgson", "john", "alan", "ellie", "murphy", "satler", "dr.", "henry", "robert", "bob", "morris", "manuel", "dr", "bowman", "tina", "guitierrez", "ellen", "mike", "it’s", "don’t", "that’s"))) #take out all names
+
+```
+
+::: panel-tabset
+## Creating Column Graph of Top Words
+
+```{r}
+
+top_5 <- jp_words_clean %>% 
+  group_by(num_numeric) %>% 
+  arrange(-n) %>% 
+  slice(1:5) %>%
+  ungroup() 
+
+# Make the plot with reordered bars within each facet
+jp_column <- top_5 %>%
+  ggplot(aes(y = word, x = n)) +  # Reorder 'word' by 'n' on the y-axis
+  geom_col(fill = "#520101") +
+  theme_minimal() + 
+  labs(title = "Top 5 Words in Each Iteration", x = "Word Count", y = NULL) +
+  facet_wrap(~num_numeric, scales = "free") +  # Facet wrap by num_numeric
+  theme(axis.text.x = element_text(hjust = 1))  # Optional: Rotate x labels
+
+# Display the plot
+jp_column
+```
+
+-   The words used closely mirror the major problems faced by the characters throughout the book, especially the transition between tyrannosaur to raptor to nest
+
+-   If character names were not eliminated from the analysis, the top 5 words for every category would just be character names
+
+## Wordcloud
+
+```{r}
+
+top_100 <- jp_words_clean %>% 
+  arrange(-n) %>% 
+  slice(1:100)
+
+cloud <- ggplot(data = top_100, aes(label = word)) +
+  geom_text_wordcloud(aes(color = n, size = n), shape = "diamond") +
+  scale_size_area(max_size = 6) +
+  scale_color_gradientn(colors = c("#520101","#a60000","#ff0000")) +
+  theme_minimal()
+cloud
+
+```
+
+-   Similar results to the column graph, but shows how frequently the word animals is used throughout the text, with dinosaurs as a close second
+
+-   The word head also appears frequently throughout the book, likely referring to animals moving their heads to look at the characters or peeking around corners
+
+## Sentiment Analysis
+
+```{r}
+
+#LOAD IN + LINK THE BING LEXICON
+bing_lex <- get_sentiments(lexicon = "bing")
+
+jp_bing <- jp_words_clean %>% 
+  inner_join(bing_lex, by = 'word') 
+
+#CREATE LOG RATIO FOR THE ENTIRE BOOK
+bing_log_ratio_book <- jp_bing %>% 
+  summarize(n_pos = sum(sentiment == 'positive'),
+            n_neg = sum(sentiment == 'negative'),
+            log_ratio = log(n_pos / n_neg))
+
+#CREATE THE LOG RATIO FOR EACH CHAPTER 
+bing_log_ratio_ch <- jp_bing %>% 
+  group_by(num_numeric) %>% 
+  summarize(n_pos = sum(sentiment == 'positive'),
+            n_neg = sum(sentiment == 'negative'),
+            log_ratio = log(n_pos / n_neg)) %>%
+  mutate(log_ratio_adjust = log_ratio - bing_log_ratio_book$log_ratio) %>%
+  mutate(pos_neg = ifelse(log_ratio_adjust > 0, 'pos', 'neg'))
+
+#CREATE PLOT 
+ggplot(data = bing_log_ratio_ch, 
+       aes(x = log_ratio_adjust,
+           y = fct_rev(factor(num_numeric)),
+           fill = pos_neg)) +
+           # y = fct_rev(as.factor(chapter)))) +
+  geom_col() +
+  labs(x = 'Adjusted Log (Positive/Negative)',
+       y = 'Iteration (Section) Number',
+       title = "Sentiment Analyis of Iterations in Jurassic Park") +
+  scale_fill_manual(values = c('pos' = 'darkgreen', 'neg' = 'darkred')) +
+  theme_minimal() +
+  theme(legend.position = 'none')
+  
+
+```
+
+-   As was expected, the second half of the book is significantly more negative then the first half
+
+-   Looking at the text analysis, the tyrannosaur appears for the first time in iteration 4, which could be the driving factor in the tone of the book shifting
+:::
