@@ -18,14 +18,14 @@ about:
       href: mailto:slance@ucsb.edu
 ---
 
-**ABOUT ME**
+**Introduction**
 
-Hi, I'm Sam! I am currently living in Santa Barbara, California getting my Masters in Environmental Science and Management (MESM) degree. With my background in Earth Science and Hydrology, I enjoy thinking about how to use publically available large datasets to understand river migration and avulsions to prevent flooding in major cities.
+I am a first year PhD student in the Geography Department at UCSB working in the Surface Processes Laboratory under Vamsi Ganti.
 
-**PROFESSIONAL INTERESTS:**
+**Professional and Academic Interests**
 
-Geomorphology \| River Migration and Movement \| Flood Resilience \| Sustainable Water Resource Management \| Environmental Justice \| Sustainability
+Geomorphology \| Flood Resilience \| Sustainable Water Resource Management \| Environmental Justice \| Sustainability \| Data Visualization
 
-**TECHNICAL SKILLS:**
+**Skills**
 
-R Studio \| Python \| Excel \| Microsoft Office \| ArcGIS Pro \| ArcMap
+Python \| RStudio \| Affinity \| ArcGIS Pro \| Comfortable Navigating in Linux Environments

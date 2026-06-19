@@ -2,22 +2,28 @@
 title: "About"
 ---
 
-Originally I came to Washington University in St. Louis as a Chinese and Art History double major, before discovering my interest in Earth Science. Studying Hydrology and Surface Processes, I was fascinated by rivers and how they could move sediments through landscapes. Looking for new experiences, I moved to New York City when I graduated and worked as a Staff Geologist, monitoring soil movement on construction sites to comply with the Resource Conservation and Recovery Act (RCRA)
+While I originally came into college as an Art History and Chinese double major, my first Earth Science class quickly changed everything. After a few weeks of camping in the rain and being taken into cave rivers, I was hooked, and have been ever since. I graduated in 2018 with my BA in Environmental Earth Science, and moved to NYC to pursue my dream of being a Geologist. 
 
-Currently I am a second-year student at the Bren School getting my Masters in Environmental Science and Management. Since coming to Bren, I have re-discovered my interest in rivers, and am currently working in the Surface Processes Lab here at UCSB studying river migration and movement worldwide. This results of this research could affect flood policy in regions that experience avulsion events, informing when flood prevention measures could be put into place.
+After a few months of being a consulting Geologist, I realized the career trajectory of a consultant did not match up with my goals, so I applied to the Bren School at UCSB. While there, I focused on Water Resources Management, and continued to pitch projects relating to rivers, as that was always what captured my interest. In the summer betwen my first and second year, I began working for Vamsi Ganti as a Research Assistant, studying rivers and how and why they change paths (avulse). This led me down a path I never thought I would end up on, which is as a first year PhD student in the Geography Department still at UCSB. 
 
-Outside of Bren, I love being outside, mainly walking along the beach with friends or going for a run around campus. I also enjoy knitting and crocheting, and host a craft night every week in my apartment.
+My current work focuses on California Rivers, as we are trying to understand how different rivers in California migrate, and what factors could be at play. This work is funded by NOAA and FEMA, and will (hopefully) be applied to improve flood mapping and provide insight as to whether salmon habitats line up with areas of high river mobility.
+
+Outside of work, you can find me running slowly around UCSB's campus, lying on the beach covered head to toe in clothing, or biking around downtown. 
 
 ::: panel-tabset
 ## Professional Experience
 
-**Research Assistant**, Surface Processes Lab at UCSB (June 2024- Present)
+**PhD Student**, Surface Processes Lab at UCSB (September 2025-Present)
+
+**Research Assistant**, Surface Processes Lab at UCSB (June 2024- September 2025)
 
 **Data Manager**, Group Project at the Bren School at UCSB (March 2024-June 2025)
 
 **Environmental Planning Intern**, Morro Bay Estuary Program (June 2024-September 2024)
 
 ## Education
+
+**PhD in Geography**, UCSB (Anticipated 2030)
 
 **MESM in Environmental Science and Management** , The Bren School at UCSB (September 2023-June 2025)
 
@@ -36,8 +42,6 @@ Quantitative Geomorphology \| Groundwater Management \| Sustainable Water Resour
 ::: {.cell layout-ncol=2}
 ![On an Undergraduate Geology Field Trip in Death Valley](images/sam_outside.jpg){width=30%, fig-align="center"}
 
-![Presenting for my GIS Course](images/nat_sam.jpg){width=30%, fig-align="center"}
-
 ![Construction Site from Consulting in the South Bronx after Graduation](images/construction_site.jpg){width=30%, fig-align="center"}
 
 ![After My First Grad School Presentation](images/biz_project.jpg){width=30%, fig-align="center"}
@@ -45,8 +49,9 @@ Quantitative Geomorphology \| Groundwater Management \| Sustainable Water Resour
 
 ![My Group for My Bren Group Project (Thesis Equivlent)](images/gp.jpg){width=30%, fig-align="center"}
 
+![The Surface Processes Lab Goes to Zaytoon](images/IMG_0161 2.jpg){width=30%, fig-align="center"}
 
-![A Selection of Avulsion Sites from My Work in the Surface Processes Lab](images/clipboard-3533513032.png){width=30%, fig-align="center"}
+![Walking along Jalama Beach](images/IMG_0359 2.jpg){width=30%, fig-align="center"}
 :::
 
 :::

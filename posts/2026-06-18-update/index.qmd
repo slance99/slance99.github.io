@@ -1,0 +1,16 @@
+---
+title: "An Intro to Blogging"
+description: "An attempt to getting back into working on my website, and updating people on my current life"
+author:
+  - name: Sam Lance
+date: 05-1-2026
+categories: [Life Updates] # self-defined categories
+image: river_meander.jpg
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+# **Welcome Back!**
+
+Long time no update! Last I posted I actually had not even taken my offer to be a PhD student just yet, and here I am just now wrapping up the end of my first (academic) year. Now I've TA'd for two different classes, started a new project, and presented a talk at my first ever conference.
+
+I hope in the next few months this can be a space for small updates on projects I have going on, any helpful guides I am workshopping at the moment, or just talking about anything that has come up in my academic life I think warrants a post! 
