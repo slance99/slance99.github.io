@@ -4,7 +4,7 @@ description: "You don't need to be a developer to work in the command line and s
 author:
   - name: Sam Lance
 date: 06-19-2026
-categories: [Life Updates] [Python]# self-defined categories
+categories: [Life Updates, Python]# self-defined categories
 image: cli.jpg
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
