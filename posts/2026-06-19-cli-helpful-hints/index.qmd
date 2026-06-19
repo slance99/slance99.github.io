@@ -1,6 +1,6 @@
 ---
 title: "A Girl's Guide to Working in the Command Line and SLURM"
-description: "You don't need to be a developer to work in the command line and submitting jobs through SLURM!"
+description: "You don't need to be a developer to work in the command line and submit jobs through SLURM!"
 author:
   - name: Sam Lance
 date: 06-19-2026
