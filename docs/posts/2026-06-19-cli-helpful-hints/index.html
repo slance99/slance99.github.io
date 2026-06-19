@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sam Lance">
+<meta name="dcterms.date" content="2026-06-19">
+<meta name="description" content="You don’t need to be a developer to work in the command line and submitting jobs through SLURM!">
 
-<title>Portfolio – SAM LANCE</title>
+<title>A Girl’s Guide to Working in the Command Line and SLURM – SAM LANCE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +26,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href=".//media/lance_logo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1b8bb06049f9027c4e506b865c92882d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//media/lance_logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-1b8bb06049f9027c4e506b865c92882d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,81 +74,23 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./media/lance_logo.png" alt="Alt text for logo" class="navbar-logo light-content">
-    <img src="./media/lance_logo.png" alt="Alt text for logo" class="navbar-logo dark-content">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../media/lance_logo.png" alt="Alt text for logo" class="navbar-logo light-content">
+    <img src="../../media/lance_logo.png" alt="Alt text for logo" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">SAM LANCE</span>
     </a>
   </div>
@@ -158,23 +101,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio_docs/resume.pdf"> 
+    <a class="nav-link" href="../../portfolio_docs/resume.pdf"> 
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio_docs/cv.pdf" target="_blank"> 
+    <a class="nav-link" href="../../portfolio_docs/cv.pdf" target="_blank"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item compact">
@@ -190,324 +133,75 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">A Girl’s Guide to Working in the Command Line and SLURM</h1>
+                  <div>
+        <div class="description">
+          You don’t need to be a developer to work in the command line and submitting jobs through SLURM!
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Life Updates</div>
+                <div class="quarto-category">Python</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Sam Lance </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 19, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="RGF0YSUyMEFuYWx5c2lz">Data Analysis <span class="quarto-category-count">(3)</span></div><div class="category" data-category="RGF0YSUyMFZpc3VhbGl6YXRpb24=">Data Visualization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R0lT">GIS <span class="quarto-category-count">(3)</span></div><div class="category" data-category="R3JhcGhpYyUyMERlc2lnbg==">Graphic Design <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGlmZSUyMFVwZGF0ZXM=">Life Updates <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(5)</span></div><div class="category" data-category="V3JpdGluZyUyMFNhbXBsZQ==">Writing Sample <span class="quarto-category-count">(3)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><strong>Introduction</strong></a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Portfolio</h1>
-</div>
-
-
-
-<div class="quarto-title-meta column-page-left">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
 
+<p><img src="cli.jpg" class="img-fluid"></p>
+<section id="introduction" class="level1">
+<h1><strong>Introduction</strong></h1>
+<p>We all know the feeling, you see the symbol of the terminal in your applications folder and you pray your IT team does not does not ask you to go into that scary black hole. No GUI to help you through, just lines of white text that somehow is your computer’s entire system?? And it’s different on Mac and Windows, and there’s a whole other thing called Linux?? Even worse, what is a SLURM??</p>
+<p>But as a recent convert, I am here to spread the good word. It may be old fashioned, but it both tools are incredibly powerful, and can be a great way to learn how your computer works. It is also a great way to learn how to use Python, which is a powerful programming language that is widely used in many fields, including geology.</p>
+<p>#<strong>The Guide</strong></p>
+<p>As I have been on my own learning journey, I have been compiling a guide to help beginners to be able to work in the command line independently to run some pretty big jobs! I was lucky enough to have some pretty brilliant people by my side helping me to learn some basic commands and answer some pretty asinine questions, but most people are not so lucky. This is a collection of knowledge I have gained, hopefully written in a way that is accessible to beginner researchers.</p>
+<p>If you do find this guide helpful, please let me know! This is in a Google Docs format, so leave any comments or suggestions you have, and I will be sure to update the guide as I learn more about the command line myself!</p>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="TGlmZSUyMFVwZGF0ZXMlMkNQeXRob24=" data-listing-date-sort="1781852400000" data-listing-file-modified-sort="1781841747305" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="270">
-<a href="./posts/2026-06-19-cli-helpful-hints/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2026-06-19-cli-helpful-hints/cli.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-A Girl’s Guide to Working in the Command Line and SLURM
-</h5>
-<div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('TGlmZSUyMFVwZGF0ZXM='); return false;">Life Updates</div>
+</section>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>You don’t need to be a developer to work in the command line and submitting jobs through SLURM!</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance
-</div>
-<div class="listing-date">
-Jun 19, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="TGlmZSUyMFVwZGF0ZXM=" data-listing-date-sort="1777618800000" data-listing-file-modified-sort="1781840819492" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="107">
-<a href="./posts/2026-06-18-update/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2026-06-18-update/river_meander.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-An Intro to Blogging
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TGlmZSUyMFVwZGF0ZXM='); return false;">Life Updates</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>An attempt to getting back into working on my website, and updating people on my current life</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance
-</div>
-<div class="listing-date">
-May 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="RGF0YSUyMEFuYWx5c2lzJTJDUg==" data-listing-date-sort="1742281200000" data-listing-file-modified-sort="1743446110873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1279">
-<a href="./posts/2025-03-19-jp-244/a4_task_2_lance_sam.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2025-03-19-jp-244/dino_cover.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Text Analysis of Jurassic Park
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMEFuYWx5c2lz'); return false;">Data Analysis</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Word frequency and sentiment analysis of the text from the book Jurassic Park by Michael Crichton</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance
-</div>
-<div class="listing-date">
-Mar 18, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="RGF0YSUyMFZpc3VhbGl6YXRpb24lMkNSJTJDR3JhcGhpYyUyMERlc2lnbg==" data-listing-date-sort="1741507200000" data-listing-file-modified-sort="1742158854794" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4228">
-<a href="./posts/2025-03-09-data-vis-infographic/blog_post.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2025-03-09-data-vis-infographic/ranier.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Composite Volcanoes and the Ring of Fire
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFZpc3VhbGl6YXRpb24='); return false;">Data Visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R3JhcGhpYyUyMERlc2lnbg=='); return false;">Graphic Design</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Creating an infographic on the distribution of composite volcanoes around the world, the rock types that make up these volcanoes, and the geologic environments they form in.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance
-</div>
-<div class="listing-date">
-Mar 9, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="RGF0YSUyMEFuYWx5c2lzJTJDUg==" data-listing-date-sort="1741507200000" data-listing-file-modified-sort="1742427756370" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="620">
-<a href="./posts/2025-03-19-pca-244/a2_task2_lance_sam.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2025-03-19-pca-244/rain.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Performing a PCA with Google Earth Engine Climate Data
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMEFuYWx5c2lz'); return false;">Data Analysis</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Analyzing the relationships between different climate variables (annual rainfall + temperature, wind, cloudiness, rain+ temperature seasonality, isothermality)</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance
-</div>
-<div class="listing-date">
-Mar 9, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="RGF0YSUyMEFuYWx5c2lzJTJDUg==" data-listing-date-sort="1739520000000" data-listing-file-modified-sort="1742427675262" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1376">
-<a href="./posts/2025-03-19-palmetto-244/a2_task1_lance_sam.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2025-03-19-palmetto-244/palmetto.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Predicting Palmetto Species Using Binomial Linear Regression
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMEFuYWx5c2lz'); return false;">Data Analysis</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Using canopy height, widest canopy length, widest canopy width, and the number of green leaves to predict palmetto species</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance
-</div>
-<div class="listing-date">
-Feb 14, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="V3JpdGluZyUyMFNhbXBsZSUyQ1IlMkNHSVM=" data-listing-date-sort="1733040000000" data-listing-file-modified-sort="1734664400069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3039">
-<a href="./posts/2024-12-01-watershed-plan/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-12-01-watershed-plan/stlouis.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-St.&nbsp;Louis, Missouri Watershed Management Plan
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZyUyMFNhbXBsZQ=='); return false;">Writing Sample</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R0lT'); return false;">GIS</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Watershed Management Plan for the city of St.&nbsp;Louis Missouri</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance, Natalie Mayer, Liv Hemond
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="V3JpdGluZyUyMFNhbXBsZSUyQ0dJUw==" data-listing-date-sort="1733040000000" data-listing-file-modified-sort="1781839873831" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="647">
-<a href="./posts/2024-09-01-270-lab1/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-09-01-270-lab1/african_lions.avif" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Habitat Suitability for African Lion Populations Under Climate Change
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZyUyMFNhbXBsZQ=='); return false;">Writing Sample</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R0lT'); return false;">GIS</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Understanding how African Lion habitats will change under different climate change predictions</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance, Liv Hemond, Ashley Larsen
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="V3JpdGluZyUyMFNhbXBsZSUyQ0dJUw==" data-listing-date-sort="1733040000000" data-listing-file-modified-sort="1736181159474" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="732">
-<a href="./posts/2024-09-24-lab-4/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2024-09-24-lab-4/jaguars.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Least Cost Path for Jaguar Movement
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZyUyMFNhbXBsZQ=='); return false;">Writing Sample</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R0lT'); return false;">GIS</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Finding the least cost path for jaguar movement in Southern Costa Rica for barrier removal</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Sam Lance, Priscilla Ta, Ashley Larsen
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
